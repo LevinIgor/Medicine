@@ -1,0 +1,28 @@
+button {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  background-color: var(--blue-200);
+  color: var(--white);
+  border: none;
+  border-radius: var(--button-border-radius);
+  width: fit-content;
+  height: fit-content;
+
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--blue-200);
+
+  border: none;
+}
+
+button:disabled {
+  background-color: var(--gray-100);
+  color: var(--gray-400);
+  cursor: not-allowed;
+}

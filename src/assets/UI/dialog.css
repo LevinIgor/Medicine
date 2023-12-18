@@ -1,0 +1,15 @@
+dialog {
+  width: 100%;
+  max-width: 580px;
+  height: min-content;
+  background-color: var(--white);
+  border-radius: var(--dialog-border-radius);
+  padding: 80px 40px;
+  box-shadow: var(--dialog-box-shadow);
+  border: none;
+  user-select: none;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,68 @@
+p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--gray-160);
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--gray-160);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif !important;
+  color: var(--gray-200);
+  font-weight: 600;
+  width: 100%;
+  margin: 0;
+  word-break: break-all;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(36px, 5vw, 56px) !important;
+  line-height: clamp(50px, 5vw, 80px) !important;
+}
+
+h2 {
+  font-size: clamp(32px, 5vw, 40px) !important;
+  line-height: clamp(44px, 5vw, 56px) !important;
+}
+
+h3 {
+  font-size: 32px !important;
+  line-height: 44px !important;
+}
+
+h4 {
+  font-size: 28px !important;
+  line-height: 40px !important;
+}
+
+h5 {
+  font-size: 20px !important;
+  line-height: 28px !important;
+}
+
+h6 {
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
