@@ -1,5 +1,5 @@
 <script setup>
-  import BreadCrumb from "@/components/breadcrumb.vue";
+  import BreadCrumb from "@/components/Breadcrumb.vue";
   import vSearchInput from "@/components/vSearchInput.vue";
   import Accordion from "@/components/Accordion.vue";
   import vTabs from "@/components/Tabs/Tabs.vue";
