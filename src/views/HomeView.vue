@@ -34,7 +34,6 @@
   fetchDoctorsForHomePage(8).then(_doctors => (doctors.value = _doctors));
 
   const slidesPerView = computed(() => {
-    console.log(window.innerWidth);
     if (window.innerWidth < 768) return 2;
     if (window.innerWidth < 1024) return 3;
     return 4;
