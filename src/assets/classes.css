@@ -1,0 +1,46 @@
+.label-blue {
+  color: var(--blue-200);
+  background-color: var(--blue-160);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.link-blue {
+  color: var(--blue-200);
+  text-decoration: underline;
+}
+
+.info-label-red {
+  color: var(--white);
+  background-color: var(--red);
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  width: fit-content;
+  box-sizing: border-box;
+}
+.info-label-yellow {
+  color: var(--white);
+  background-color: var(--yellow);
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  width: fit-content;
+  box-sizing: border-box;
+}
+.info-label-green {
+  color: var(--white);
+  background-color: var(--green);
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  width: fit-content;
+  box-sizing: border-box;
+}
