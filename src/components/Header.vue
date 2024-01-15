@@ -2,6 +2,7 @@
   import logoIcon from "@/components/icons/logo.vue";
   import BurgerIcon from "@/components/icons/burger.vue";
   import supabase from "@/supabase.js";
+
   import { ref } from "vue";
 
   const showSignInModal = () =>
@@ -41,11 +42,15 @@
       isSignedIn.value = false;
     }
   });
+
+  function openMobileMenu() {
+    document.getElementById("mobile-menu").showModal();
+  }
 </script>
 <template>
-  <header class="p-5 bg-white">
+  <header class="p-5 bg-white w-full">
     <div class="container flex items-center justify-between">
-      <logo-icon class="cursor-pointer" @click="$router.push('/')" />
+      <logo-icon class="cursor-pointer md:w-20" @click="$router.push('/')" />
       <nav class="block md:hidden">
         <ul class="flex items-center gap-5 cursor-pointer">
           <li v-for="item in menu" :key="item.name">
@@ -74,7 +79,7 @@
         </div>
         <button @click="showSignInModal" v-else>Sign In</button>
       </div>
-      <div class="hidden md:block">
+      <div class="hidden md:block" @click="openMobileMenu">
         <burger-icon />
       </div>
     </div>

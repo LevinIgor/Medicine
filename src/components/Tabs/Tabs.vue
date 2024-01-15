@@ -32,7 +32,7 @@
         :key="index"
         @click="(activeTab = title), $router.push({ params: { tab: title } })"
       >
-        <component v-if="title.icon" :is="getIcon(title)" class="w-5 h-5" />
+        <component :is="getIcon(title)" class="w-5 h-5" />
         {{ title }}
       </li>
     </ul>

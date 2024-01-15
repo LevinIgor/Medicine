@@ -3,6 +3,7 @@
   import SignUp from "@/components/dialogs/SignUp.vue";
   import ResetPassword from "@/components/dialogs/ResetPassword.vue";
   import CheckEmail from "@/components/dialogs/CheckEmail.vue";
+  import MobileMenu from "@/components/dialogs/MobileMenu.vue"
 </script>
 
 <template>
@@ -11,6 +12,7 @@
     <sign-up />
     <reset-password />
     <check-email />
+    <mobile-menu />
   </div>
 </template>
 
