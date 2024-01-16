@@ -34,9 +34,14 @@
   fetchDoctorsForHomePage(8).then(_doctors => (doctors.value = _doctors));
 
   const slidesPerView = computed(() => {
-    if (window.innerWidth < 768) return 2;
+    if (window.innerWidth < 768) return 1;
     if (window.innerWidth < 1024) return 3;
     return 4;
+  });
+
+  const needDetails = computed(() => {
+    const width = window.innerWidth;
+    return width > 600;
   });
 </script>
 
@@ -128,25 +133,29 @@
     </section>
 
     <!-- Section 4 -->
-    <section class="container flex flex-col items-center py-24">
+    <section class="container flex flex-col items-center py-32 md:py-24">
       <h2 class="max-w-md">Exceptionally High Standards</h2>
       <p class="text-center max-w-lg mt-3">
         Our goal is to provide outstanding quality of care, effective treatment
         and complete satisfaction of your healthcare needs
       </p>
       <div class="grid grid-cols-12 md:block gap-5 mt-10">
-        <div class="col-span-5 grid grid-rows-6 gap-5">
-          <div class="row-span-4 bg-blue-160 rounded px-6 py-10 flex flex-col">
+        <div class="col-span-5 grid md:block grid-rows-6 gap-5">
+          <div
+            class="row-span-4 md:row-span-1 bg-blue-160 rounded px-6 md:px-4 py-10 md:py-6 flex flex-col md:mt-5"
+          >
             <h4>Reception at a convenient time and without a queue</h4>
-            <p class="mt-3">
+            <p class="mt-3 md:mt-1">
               Schedule a visit to a doctor online and don't waste time waiting
               in lines
             </p>
-            <button class="mt-auto">Find a doctor</button>
+            <button class="mt-5">Find a doctor</button>
           </div>
-          <div class="row-span-2 bg-violet-180 rounded px-6 py-10">
+          <div
+            class="row-span-2 md:row-span-1 bg-violet-180 rounded px-6 md:px-4 py-10 md:py-6 md:mt-5"
+          >
             <h5>Quality of medical services</h5>
-            <p class="mt-3">
+            <p class="mt-3 md:mt-1">
               Guaranteeing the highest level of medical treatment, taking into
               account modern technologies and best practices
             </p>
@@ -154,23 +163,27 @@
         </div>
         <div class="grid grid-rows-6 md:block col-span-7 gap-5">
           <div class="grid grid-cols-10 md:block row-span-2 gap-5">
-            <div class="col-span-4 bg-violet-180 rounded px-6 py-10">
+            <div
+              class="col-span-4 bg-violet-180 rounded px-6 md:px-4 py-10 md:py-6 md:mt-5"
+            >
               <h5>Patient's personal account</h5>
-              <arrow-square-icon class="mt-5" />
+              <arrow-square-icon class="mt-5 md:mt-3" />
             </div>
-            <div class="col-span-6 bg-violet-180 rounded px-6 py-10">
+            <div
+              class="col-span-6 bg-violet-180 rounded px-6 md:px-4 py-10 md:py-6 md:mt-5"
+            >
               <h5>Modern equipment</h5>
-              <p class="mt-3">
+              <p class="mt-3 md:mt-1">
                 Our clinic uses cutting-edge technology for precise diagnosis
                 and treatment with advanced medical equipment.
               </p>
             </div>
           </div>
           <div
-            class="row-span-4 md:row-auto bg-blue-160 rounded px-6 py-10 flex flex-col"
+            class="row-span-4 md:row-auto bg-blue-160 rounded px-6 md:px-4 py-10 md:py-6 flex flex-col md:mt-5"
           >
             <h4>Wide range of services</h4>
-            <p class="mt-3">
+            <p class="mt-3 md:mt-1">
               We offer a variety of medical services and specializations, which
               allows us to provide comprehensive treatment and care.
             </p>
@@ -182,7 +195,7 @@
 
     <!-- Section 5 -->
     <section class="bg-white">
-      <div class="container py-20 flex flex-col items-center">
+      <div class="container py-32 md:py-24 flex flex-col items-center">
         <span class="label-blue">Services</span>
         <h2 class="mt-3">Our Services</h2>
         <p class="mt-3 text-center max-w-lg">
@@ -210,7 +223,7 @@
     </section>
 
     <!-- Section 6 -->
-    <section class="container flex flex-col items-center py-24">
+    <section class="container flex flex-col items-center py-32 md:py-24">
       <span class="label-blue text-center">Doctors</span>
       <h2 class="mt-3">Our Specialist Doctors</h2>
       <p class="text-center max-w-lg mt-3">
@@ -228,7 +241,7 @@
 
     <!-- Section 7 -->
     <section class="bg-white">
-      <div class="container flex flex-col items-center py-20">
+      <div class="container flex flex-col items-center py-32 md:py-24">
         <span class="label-blue text-center">Contact Us</span>
         <h2 class="mt-3">Contact Us</h2>
         <p class="text-center mt-3">
@@ -236,12 +249,12 @@
           consultations and to make an appointment
         </p>
 
-        <google-map class="mt-10 self-stretch" :need-details="true" />
+        <google-map class="mt-10 self-stretch" :need-details="needDetails" />
       </div>
     </section>
 
     <!-- Section 8 -->
-    <section class="container py-20 flex flex-col items-center">
+    <section class="container py-32 md:py-24 flex flex-col items-center">
       <h2 class="max-w-md">What Our Client Says About Us</h2>
       <p class="text-center mt-3 max-w-md">
         Where your health journey begins with tailored care and advanced medical
@@ -253,7 +266,7 @@
 
     <!-- Section 9 -->
     <section class="bg-white">
-      <div class="py-20 flex flex-col items-center container">
+      <div class="py-32 md:py-24 flex flex-col items-center container">
         <span class="label-blue">FAQ</span>
         <h2 class="max-w-md mt-3">Frequently Asked Questions</h2>
         <p class="text-center max-w-lg mt-3">
@@ -266,7 +279,7 @@
 
     <!-- Section 10 -->
     <section class="bg-gray">
-      <div class="container py-24">
+      <div class="container py-32 md:py-24">
         <appointment />
       </div>
     </section>

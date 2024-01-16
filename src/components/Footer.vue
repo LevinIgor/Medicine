@@ -9,7 +9,7 @@
 <template>
   <footer class="bg-gray-200 py-10 md:p-3">
     <div class="container">
-      <div class="flex justify-between md:block pt-20">
+      <div class="flex justify-between md:block pt-20 md:pt-14">
         <h4 class="text-white max-w-md">
           Get Started And Book An Appointment Today
         </h4>
@@ -30,11 +30,12 @@
           class="col-span-1 flex flex-col text-bg gap-2 font-medium text-sm text-gray"
         >
           <span class="text-white font-semibold mb-1 text-base">Menu</span>
-          <span>About Us</span>
-          <span>Services</span>
-          <span>Doctors</span>
-          <span>Contact Us</span>
-          <span>FAQ</span>
+
+          <a href="" class="text-gray">About Us</a>
+          <a href="" class="text-gray">Services</a>
+          <a href="" class="text-gray">Doctors</a>
+          <a href="" class="text-gray">Contact Us</a>
+          <a href="" class="text-gray">FAQ</a>
         </div>
         <div
           class="col-span-1 flex flex-col text-gray gap-2 font-normal text-sm"
@@ -51,7 +52,7 @@
       </div>
       <div class="line" />
       <div class="flex gap-3 md:items-center md:flex-col-reverse">
-        <span class="text-gray-100 md:mt-5"
+        <span class="text-gray-100 md:mt-5 font-normal text-xs"
           >@2023 DentalClinic. All Rights Reserved.</span
         >
         <div class="ml-auto md:ml-0 flex gap-3">

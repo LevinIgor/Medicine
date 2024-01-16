@@ -7,13 +7,18 @@
 
   import { Swiper } from "swiper/vue";
   import { Pagination, Navigation, Virtual } from "swiper/modules";
-
+  import { computed } from "vue";
   const props = defineProps({
     slidesPerView: {
       type: Number,
       default: 3,
     },
   });
+
+  const needNavigation = computed(() => {
+    const width = window.innerWidth
+    return width > 700
+  })
 </script>
 <template>
   <swiper
@@ -25,7 +30,7 @@
     :pagination="{
       type: 'fraction',
     }"
-    :navigation="true"
+    :navigation="needNavigation"
     :passiveListeners="false"
   >
     <slot />
@@ -33,9 +38,6 @@
 </template>
 
 <style lang="scss">
-  .swiper {
-  }
-
   .swiper-pagination-fraction {
     display: none;
   }

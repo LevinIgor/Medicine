@@ -33,8 +33,8 @@
       :key="index"
       @click="isExpanded = !isExpanded"
     >
-      <ChevronDown class="col-span-1" />
-      <div class="col-span-9">
+      <ChevronDown class="col-span-1 md:col-span-2"  />
+      <div class="col-span-9 md:col-span-8">
         <span class="font-semibold text-lg text-gray-200 select-none roboto">{{
           faq.question
         }}</span>

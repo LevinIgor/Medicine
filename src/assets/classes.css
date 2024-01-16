@@ -9,6 +9,12 @@
   box-sizing: border-box;
 }
 
+@media (max-width: 600px) {
+  .label-blue {
+    font-size: 12px;
+  }
+}
+
 .link-blue {
   color: var(--blue-200);
   text-decoration: underline;

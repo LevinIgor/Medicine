@@ -1,11 +1,17 @@
 <script setup>
+  import { computed } from "vue";
   import { SwiperSlide } from "swiper/vue";
   import Slider from "@/components/Slider.vue";
   import StarIcon from "@/components/icons/filled/star.vue";
   import QuotesIcon from "@/components/icons/quotes.vue";
+
+  const slidesPerView = computed(() => {
+    const width = window.innerWidth;
+    return width > 600 ? 4 : 1;
+  });
 </script>
 <template>
-  <Slider>
+  <Slider :slides-per-view="slidesPerView">
     <SwiperSlide class="bg-white rounded-md p-8 flex flex-col">
       <div class="flex items-center justify-between">
         <QuotesIcon />

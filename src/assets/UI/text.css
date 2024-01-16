@@ -6,6 +6,12 @@ p {
   margin: 0;
 }
 
+@media (max-width:700px) {
+  p{
+    font-size: 14px;
+  }
+}
+
 a {
   text-decoration: none;
   color: var(--gray-160);
@@ -29,7 +35,6 @@ h6 {
   font-weight: 600;
   width: 100%;
   margin: 0;
-  word-break: break-all;
 }
 
 h1,
@@ -43,7 +48,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(32px, 5vw, 40px) !important;
+  font-size: clamp(26px, 5vw, 40px) !important;
   line-height: clamp(44px, 5vw, 56px) !important;
 }
 

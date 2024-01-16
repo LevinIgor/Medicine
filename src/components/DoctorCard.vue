@@ -10,7 +10,7 @@
   });
 </script>
 <template>
-  <div class="doctor-card w-72 relative rounded-lg overflow-hidden">
+  <div class="doctor-card w-full relative rounded-lg overflow-hidden">
     <img class="w-full h-full object-cover" :src="doctor.image" alt="" />
     <div class="absolute bottom-0 blur-lg bg-white/90 w-full rounded-t-2xl">
       <h5 class="text-center pt-2">
