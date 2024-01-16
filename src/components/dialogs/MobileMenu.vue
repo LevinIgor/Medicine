@@ -17,6 +17,7 @@
     const innerHeight = window.innerHeight;
     const dialog = document.getElementById(dialogId);
     dialog.style = `height:${innerHeight}px`;
+    dialog.style = "background-color:red";
   });
 </script>
 <template>
@@ -55,7 +56,7 @@
         </li>
       </ul>
 
-      <button class="w-full mt-auto">Sign In</button>
+      <button class="w-full mt-10">Sign In</button>
       <div class="flex items-center justify-center gap-3 mt-5 mb-10">
         <telegram-icon class="text-white" />
         <youtube-icon class="text-white" />
