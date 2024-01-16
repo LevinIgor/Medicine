@@ -43,60 +43,60 @@
 <template>
   <main>
     <!-- Section 1 -->
-    <section class="bg-white">
+    <section class="bg-white py-32 md:py-24">
       <div class="flex flex-col items-center container">
-        <h1 class="mt-48 max-w-3xl">
+        <h1 class="max-w-3xl">
           Consult Your
           <span class="text-blue-200">Health</span>
           Issue Easily And Quickly
         </h1>
-        <p class="text-center max-w-3xl">
+        <p class="text-center max-w-3xl mt-3">
           Connecting you with the best healthcare profusions and resources using
           technology and innovation
         </p>
         <button class="mt-5">Book Now</button>
-        <h6 class="mt-40 text-center">Our Most Valuable Trusted Partners</h6>
-        <div
-          class="flex flex-row flex-wrap items-center justify-between mt-5 mb-12"
-        >
-          <syngenta-icon />
-          <merck-icon />
-          <allergan-icon />
-          <ardio-icon />
-          <esterline-icon />
-          <regeneron-icon />
+        <h6 class="mt-40 md:mt-24 text-center">
+          Our Most Valuable Trusted Partners
+        </h6>
+        <div class="grid grid-cols-6 mt-1 md:grid-cols-3 w-full">
+          <syngenta-icon class="w-full" />
+          <merck-icon class="w-full" />
+          <allergan-icon class="w-full" />
+          <ardio-icon class="w-full" />
+          <esterline-icon class="w-full" />
+          <regeneron-icon class="w-full" />
         </div>
       </div>
     </section>
 
     <!-- Section 2 -->
-    <section class="container flex flex-col items-center py-32">
+    <section class="container flex flex-col items-center py-32 md:py-24">
       <h2 class="max-w-xl">How to make an appointment with a doctor</h2>
       <p class="mt-3 max-w-lg text-center">
         Find out how easy and fast it is to sign up for a consultation with our
         specialists online
       </p>
       <div class="gap-3 mt-10 flex md:flex-col">
-        <div class="bg-white py-10 px-6 rounded-md">
+        <div class="bg-white py-10 md:py-6 px-6 md:px-4 rounded-md">
           <medKit-icon />
           <h5 class="mt-4 text-left">Select a medical specialty</h5>
-          <p class="mt-2">
+          <p class="mt-2 md:mt-0">
             Select the required medical specialty or doctor you want to make an
             appointment with
           </p>
         </div>
-        <div class="bg-white py-10 px-6 rounded-md">
+        <div class="bg-white py-10 md:py-6 px-6 md:px-4 rounded-md">
           <clock-icon />
           <h5 class="mt-3 text-left">Choose the time and date</h5>
-          <p class="mt-2">
+          <p class="mt-2 md:mt-0">
             Choose a convenient time and date for your consultation, taking into
             account the doctor's availability
           </p>
         </div>
-        <div class="bg-white py-10 px-6 rounded-md">
+        <div class="bg-white py-10 md:py-6 px-6 md:px-4 rounded-md">
           <document-icon />
           <h5 class="mt-3 text-left">Fill out the registration form</h5>
-          <p class="mt-2">
+          <p class="mt-2 md:mt-0">
             Fill out a short form with your personal information and contact
             details to confirm your appointment
           </p>
@@ -106,14 +106,14 @@
 
     <!-- Section 3 -->
     <section class="bg-white">
-      <div class="container grid grid-cols-2 md:grid-cols-1 gap-5 py-20">
+      <div class="container grid grid-cols-2 md:grid-cols-1 gap-5 py-24">
         <img
           src="@/assets/photo/person1.jpg"
           alt="Person picture"
           class="w-full overflow-hidden rounded-md"
         />
         <div class="flex flex-col justify-between h-full">
-          <span class="label-blue">About Us</span>
+          <span class="label-blue my-3">About Us</span>
           <h2 class="text-left">Empowering Heartier Lives, One Step a Time</h2>
           <p class="md:mt-3">
             We are expanding opportunities for a healthy life, step by step. Our
@@ -122,7 +122,7 @@
             innovative solutions to provide you with the best quality of
             service.
           </p>
-          <button class="md:mt-5">Read More</button>
+          <button class="mt-5 md:mt-5">Read More</button>
         </div>
       </div>
     </section>

@@ -7,7 +7,7 @@
 <template>
   <Header />
   <RouterView />
-  <Footer />
+  <!-- <Footer /> -->
   <Dialogs />
 </template>
 

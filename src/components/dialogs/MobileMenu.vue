@@ -6,19 +6,11 @@
   import FacebookIcon from "@/components/icons/social/facebook-filled.vue";
   import InstagramIcon from "@/components/icons/social/instagram-filled.vue";
   import TwitterIcon from "@/components/icons/social/twitter-filled.vue";
-  import { onMounted } from "vue";
+
   const dialogId = "mobile-menu";
   function closeDialog() {
-    const el = document.getElementById(dialogId);
-    el.close();
+    document.getElementById(dialogId).close();
   }
-
-  onMounted(() => {
-    const innerHeight = window.innerHeight;
-    const dialog = document.getElementById(dialogId);
-    dialog.style = `height:${innerHeight}px`;
-    dialog.style = "background-color:red";
-  });
 </script>
 <template>
   <dialog :id="dialogId">
@@ -56,7 +48,7 @@
         </li>
       </ul>
 
-      <button class="w-full mt-10">Sign In</button>
+      <button class="w-full mt-16">Sign In</button>
       <div class="flex items-center justify-center gap-3 mt-5 mb-10">
         <telegram-icon class="text-white" />
         <youtube-icon class="text-white" />

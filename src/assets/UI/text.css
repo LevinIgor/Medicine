@@ -48,21 +48,21 @@ h2 {
 }
 
 h3 {
-  font-size: 32px !important;
-  line-height: 44px !important;
+  font-size: clamp(28px, 5vw, 32px) !important;
+  line-height: clamp(40px, 5vw, 44px) !important;
 }
 
 h4 {
-  font-size: 28px !important;
-  line-height: 40px !important;
+  font-size: clamp(20px, 5vw, 28px) !important;
+  line-height: clamp(28px, 5vw, 49px) !important;
 }
 
 h5 {
-  font-size: 20px !important;
-  line-height: 28px !important;
+  font-size: clamp(16px, 5vw, 20px) !important;
+  line-height: clamp(24px, 5vw, 28px) !important;
 }
 
 h6 {
-  font-size: 16px !important;
-  line-height: 24px !important;
+  font-size: clamp(14px, 5vw, 16px) !important;
+  line-height: clamp(20px, 5vw, 24px) !important;
 }
