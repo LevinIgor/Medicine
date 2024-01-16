@@ -20,30 +20,30 @@
       <close-icon @click="closeDialog" />
     </div>
 
-    <div class="p-5 flex flex-col justify-between">
+    <div class="p-5 flex flex-col justify-between h-full">
       <ul class="flex flex-col gap-2 m-0 p-0 mt-5">
         <li
-          class="font-roboto p-3 bg-white text-gray-160 rounded-sm cursor-pointer"
+          class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
         >
           <a href="/about-us/our-history">About Us</a>
         </li>
         <li
-          class="font-roboto p-3 bg-white text-gray-160 rounded-sm cursor-pointer"
+          class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
         >
           <a href="/about-us/our-history">Services</a>
         </li>
         <li
-          class="font-roboto p-3 bg-white text-gray-160 rounded-sm cursor-pointer"
+          class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
         >
           <a href="/about-us/our-history">Doctors</a>
         </li>
         <li
-          class="font-roboto p-3 bg-white text-gray-160 rounded-sm cursor-pointer"
+          class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
         >
           <a href="/about-us/our-history">Contact us</a>
         </li>
         <li
-          class="font-roboto p-3 bg-white text-gray-160 rounded-sm cursor-pointer"
+          class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
         >
           <a href="/about-us/our-history">FAQ</a>
         </li>
