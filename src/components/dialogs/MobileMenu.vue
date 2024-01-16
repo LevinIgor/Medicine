@@ -20,7 +20,7 @@
       <close-icon @click="closeDialog" />
     </div>
 
-    <div class="p-5 flex flex-col justify-between h-full">
+    <div class="p-5 h-full flex flex-col">
       <ul class="flex flex-col gap-2 m-0 p-0 mt-5">
         <li
           class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
@@ -49,7 +49,7 @@
         </li>
       </ul>
 
-      <button class="w-full mt-5">Sign In</button>
+      <button class="w-full mt-auto">Sign In</button>
       <div class="flex items-center justify-center gap-3 mt-5 mb-10">
         <telegram-icon class="text-white" />
         <youtube-icon class="text-white" />

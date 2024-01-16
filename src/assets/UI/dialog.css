@@ -8,7 +8,6 @@ dialog {
   box-shadow: var(--dialog-box-shadow);
   border: none;
   user-select: none;
-  
 }
 
 dialog::backdrop {
@@ -24,9 +23,13 @@ dialog::backdrop {
     background-color: var(--background);
     padding: 0;
     margin: 0;
+    top: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
   }
 
   dialog::backdrop {
     background-color: transparent;
+    overflow: hidden;
   }
 }
