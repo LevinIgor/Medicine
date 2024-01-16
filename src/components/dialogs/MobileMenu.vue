@@ -6,12 +6,18 @@
   import FacebookIcon from "@/components/icons/social/facebook-filled.vue";
   import InstagramIcon from "@/components/icons/social/instagram-filled.vue";
   import TwitterIcon from "@/components/icons/social/twitter-filled.vue";
-
+  import { onMounted } from "vue";
   const dialogId = "mobile-menu";
   function closeDialog() {
     const el = document.getElementById(dialogId);
     el.close();
   }
+
+  onMounted(() => {
+    const innerHeight = window.innerHeight;
+    const dialog = document.getElementById(dialogId);
+    dialog.style = `height:${innerHeight}px`;
+  });
 </script>
 <template>
   <dialog :id="dialogId">
