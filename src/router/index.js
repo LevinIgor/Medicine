@@ -58,6 +58,11 @@ const router = createRouter({
       name: "reception",
       component: () => import("@/views/ReceptionView.vue"),
     },
+    {
+      path: "/test",
+      name: "test",
+      component: () => import("@/views/TestView.vue"),
+    },
   ],
 });
 

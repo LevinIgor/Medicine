@@ -48,9 +48,9 @@
   }
 </script>
 <template>
-  <header class="p-5 bg-white w-full">
+  <header class="p-5 md:py-3 md:px-0 bg-white w-full box-border">
     <div class="container flex items-center justify-between">
-      <logo-icon class="cursor-pointer md:w-20" @click="$router.push('/')" />
+      <logo-icon class="cursor-pointer" @click="$router.push('/')" />
       <nav class="block md:hidden">
         <ul class="flex items-center gap-5 cursor-pointer">
           <li v-for="item in menu" :key="item.name">
@@ -92,6 +92,8 @@
     &:hover {
       color: var(--gray-200);
     }
+
+    box-sizing: border-box;
   }
 
   .active {

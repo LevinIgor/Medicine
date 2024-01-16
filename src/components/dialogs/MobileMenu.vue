@@ -15,12 +15,13 @@
 </script>
 <template>
   <dialog :id="dialogId">
-    <div class="p-5 pt-0">
-      <div class="bg-white flex items-center justify-between p-3">
-        <logo-icon />
-        <close-icon @click="closeDialog" />
-      </div>
-      <ul class="flex flex-col gap-5 m-0 p-0">
+    <div class="bg-white flex items-center justify-between px-5 py-3">
+      <logo-icon />
+      <close-icon @click="closeDialog" />
+    </div>
+
+    <div class="p-5 flex flex-col justify-between">
+      <ul class="flex flex-col gap-2 m-0 p-0 mt-5">
         <li
           class="font-roboto p-3 bg-white text-gray-160 rounded-sm cursor-pointer"
         >
@@ -29,27 +30,27 @@
         <li
           class="font-roboto p-3 bg-white text-gray-160 rounded-sm cursor-pointer"
         >
-          Services
+          <a href="/about-us/our-history">Services</a>
         </li>
         <li
           class="font-roboto p-3 bg-white text-gray-160 rounded-sm cursor-pointer"
         >
-          Doctors
+          <a href="/about-us/our-history">Doctors</a>
         </li>
         <li
           class="font-roboto p-3 bg-white text-gray-160 rounded-sm cursor-pointer"
         >
-          Contact us
+          <a href="/about-us/our-history">Contact us</a>
         </li>
         <li
           class="font-roboto p-3 bg-white text-gray-160 rounded-sm cursor-pointer"
         >
-          FAQ
+          <a href="/about-us/our-history">FAQ</a>
         </li>
       </ul>
 
       <button class="w-full mt-5">Sign In</button>
-      <div class="flex items-center justify-center gap-3 mt-5">
+      <div class="flex items-center justify-center gap-3 mt-5 mb-10">
         <telegram-icon class="text-white" />
         <youtube-icon class="text-white" />
         <facebook-icon class="text-white" />
