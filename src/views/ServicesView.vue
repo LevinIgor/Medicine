@@ -29,7 +29,7 @@
 <template>
   <BaseLayout :breadcrumb="breadcrumb" title="Services">
     <vSearchInput class="max-w-lg mt-5 self-center" />
-    <div class="mt-10 grid grid-cols-3 gap-4">
+    <div class="mt-10 grid md:flex md:flex-col md:gap-5 grid-cols-3 gap-4">
       <ServiceCard
         v-for="service of services"
         :name="service.name"

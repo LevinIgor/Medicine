@@ -42,8 +42,8 @@
       class="absolute top-5 right-5 cursor-pointer"
       @click="closeModal"
     />
-    <h3 class="text-center color-gray-200">Sign In</h3>
-    <p class="text-center mt-3 color-gray-180 font-normal">
+    <h3 class="text-center text-gray-200">Sign In</h3>
+    <p class="text-center mt-3 text-gray-180 font-normal">
       Sign Up and become a part of our community
     </p>
     <form @submit.prevent="signIn" class="mt-6 flex flex-col">
@@ -72,7 +72,7 @@
       />
 
       <span
-        class="color-blue-200 font-medium block ml-auto cursor-pointer mt-3"
+        class="text-blue-180 font-medium block ml-auto cursor-pointer mt-3"
         @click="goToForgotPassword"
         >Forgot password?</span
       >
@@ -81,10 +81,10 @@
       >
       <button id="sign-in-btn" class="mt-10 w-full">Sign In</button>
     </form>
-    <p class="text-center mt-8 color-gray-160 font-normal">
+    <p class="text-center mt-8 text-gray-160 font-normal">
       Don't have an account?
       <span
-        class="cursor-pointer color-blue-200 font-medium"
+        class="cursor-pointer text-blue-180 font-medium"
         @click="goToSignUp"
         >Sign Up</span
       >

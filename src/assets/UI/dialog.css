@@ -20,7 +20,7 @@ dialog::backdrop {
     min-height: 100%;
     border-radius: 0;
     background-color: var(--background);
-    padding: 0;
+    padding: 1rem;
     margin: 0;
     top: 0;
     overflow: auto;

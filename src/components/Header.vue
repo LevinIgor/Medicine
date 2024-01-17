@@ -1,9 +1,11 @@
 <script setup>
   import logoIcon from "@/components/icons/logo.vue";
   import BurgerIcon from "@/components/icons/burger.vue";
-  import supabase from "@/supabase.js";
+  import useStore from "@/store";
+  const store = useStore();
+  import { computed } from "vue";
 
-  import { ref } from "vue";
+  const isSigned = computed(() => store.getIsSigned);
 
   const showSignInModal = () =>
     document.getElementById("sign-in-dialog").showModal();
@@ -31,18 +33,6 @@
     },
   ];
 
-  const isSignedIn = ref(false);
-
-  supabase.auth.onAuthStateChange((event, session) => {
-    if (event === "SIGNED_IN") {
-      isSignedIn.value = true;
-    }
-
-    if (event === "SIGNED_OUT") {
-      isSignedIn.value = false;
-    }
-  });
-
   function openMobileMenu() {
     document.getElementById("mobile-menu").showModal();
   }
@@ -51,6 +41,7 @@
   <header class="p-5 md:py-3 md:px-0 bg-white w-full box-border">
     <div class="container flex items-center justify-between">
       <logo-icon class="cursor-pointer" @click="$router.push('/')" />
+
       <nav class="block md:hidden">
         <ul class="flex items-center gap-5 cursor-pointer">
           <li v-for="item in menu" :key="item.name">
@@ -65,7 +56,7 @@
       <div class="block md:hidden">
         <div
           class="flex items-center gap-5"
-          v-if="isSignedIn"
+          v-if="isSigned"
           @click="$router.push({ name: 'account', params: { tab: 'profile' } })"
         >
           <div class="flex flex-col text-sm">

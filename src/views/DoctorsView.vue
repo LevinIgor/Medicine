@@ -25,8 +25,8 @@
 <template>
   <BaseLayout :breadcrumb="breadcrumb" title="Doctors">
     <vSearchInput class="mt-5 max-w-2xl mx-auto" />
-    <HorizontalFilter class="mt-10" />
-    <div class="grid grid-cols-4 gap-5 my-10">
+    <HorizontalFilter class="mt-5" />
+    <div class="grid md:flex md:flex-col md:gap-5 grid-cols-4 gap-5 my-10">
       <DoctorCard
         v-for="doctor in doctors"
         :doctor="doctor"
