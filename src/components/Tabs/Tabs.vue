@@ -23,7 +23,7 @@
   }
 </script>
 <template>
-  <div class="grid grid-cols-12 gap-5" v-if="isVertical">
+  <div class="grid grid-cols-12 gap-5 md:block" v-if="isVertical">
     <ul class="flex flex-col gap-5 col-span-3">
       <li
         class="cursor-pointer flex items-center gap-2 py-3 px-4 rounded-md bg-white text-gray-160 font-roboto select-none"
@@ -37,7 +37,7 @@
       </li>
     </ul>
 
-    <div class="col-span-9">
+    <div class="col-span-9 md:mt-10">
       <slot></slot>
     </div>
   </div>

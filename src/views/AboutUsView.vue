@@ -14,7 +14,7 @@
 <template>
   <div class="container">
     <v-breadcrumb class="my-5" :breadcrumb="breadcrumb" />
-    <h2 class="text-left my-6">About Us</h2>
+    <h2 class="text-left my-6 md:text-center">About Us</h2>
     <v-tabs>
       <v-tab title="Our History" icon="info">
         <h3 class="text-center">Our history</h3>

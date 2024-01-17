@@ -30,7 +30,7 @@ module.exports = {
       padding: "1rem",
     },
     screens: {
-      md: { max: "767px" },
+      md: { max: "700px" },
     },
   },
   variants: {

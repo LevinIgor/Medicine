@@ -29,22 +29,22 @@
         <li
           class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
         >
-          <a href="/about-us/our-history">Services</a>
+          <a href="/services">Services</a>
         </li>
         <li
           class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
         >
-          <a href="/about-us/our-history">Doctors</a>
+          <a href="/doctors">Doctors</a>
         </li>
         <li
           class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
         >
-          <a href="/about-us/our-history">Contact us</a>
+          <a href="/contact-us">Contact us</a>
         </li>
         <li
           class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
         >
-          <a href="/about-us/our-history">FAQ</a>
+          <a href="/faq">FAQ</a>
         </li>
       </ul>
 
