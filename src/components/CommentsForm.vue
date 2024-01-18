@@ -9,11 +9,11 @@
     <div class="">
       <span class="text-gray-200 text-lg font-medium">Your assessment</span>
       <div class="flex items-center gap-3 mt-3">
-        <star-icon class="md:w-4" />
-        <star-icon class="md:w-4" />
-        <star-icon class="md:w-4" />
-        <star-icon class="md:w-4" />
-        <star-icon class="md:w-4" />
+        <star-icon></star-icon>
+        <star-icon></star-icon>
+        <star-icon></star-icon>
+        <star-icon></star-icon>
+        <star-icon></star-icon>
       </div>
       <form @submit.prevent="">
         <textarea

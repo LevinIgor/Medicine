@@ -54,7 +54,7 @@
       </li>
     </ul>
 
-    <div class="mt-5 bg-white py-10 px-6 rounded-md">
+    <div class="mt-5 bg-white py-10 md:py-6 px-6 md:px-4 rounded-md">
       <slot></slot>
     </div>
   </div>

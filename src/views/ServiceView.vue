@@ -35,7 +35,7 @@
           src="../assets/photo/service1.jpg"
           alt=""
         />
-        <div class="bg-white py-10 px-7 rounded-lg">
+        <div class="bg-white py-10 md:py-6 px-7 md:px-4 rounded-lg md:mt-10">
           <h2 class="text-left">Diagnostics</h2>
           <p class="mt-3">
             Medical diagnosis is a key step in identifying diseases and
@@ -71,28 +71,28 @@
         <v-tab title="Services">
           <div class="grid md:block grid-cols-7 gap-3">
             <div class="col-span-5 flex flex-col justify-between">
-              <p>
+              <p class="mt-3">
                 Our diagnostic service is a key step in determining your health.
                 We understand that the diagnostic process can be stressful, so
                 we create a supportive environment for our patients. Our doctors
                 and medical staff have extensive experience and work to ensure
                 your comfort during each stage.
               </p>
-              <p>
+              <p class="mt-3">
                 Using advanced technology and modern equipment, we perform a
                 wide range of tests to identify potential problems and make an
                 accurate diagnosis. Our goal is not only to detect diseases, but
                 also to prevent their development and maintain your overall
                 health.
               </p>
-              <p>
+              <p class="mt-3">
                 We strive to make the diagnostic process as clear and accessible
                 to you as possible. So that you can get not only the results,
                 but also an understanding of your health condition. Our
                 specialists are ready to answer your questions, provide
                 explanations and recommendations for further treatment.
               </p>
-              <p>
+              <p class="mt-3">
                 As the entry point to your journey to health, we welcome you and
                 promise to provide you with the best level of care and support
                 throughout the diagnostic and treatment process. Our goal is
@@ -113,7 +113,7 @@
     </section>
 
     <!-- Section 4 -->
-    <section class="bg-white py-24">
+    <section class="bg-white py-24 md:py-20">
       <div class="container">
         <CommentsForm />
       </div>
