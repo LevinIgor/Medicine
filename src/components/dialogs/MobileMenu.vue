@@ -10,10 +10,12 @@
   import CalendarIcon from "@/components/icons/calendar.vue";
   import NotificationsIcon from "@/components/icons/notifications.vue";
   import ExitIcon from "@/components/icons/exit.vue";
-
+  import { useRouter } from "vue-router";
   import { computed } from "vue";
   import useStore from "@/store";
+
   const store = useStore();
+  const router = useRouter();
 
   const dialogId = "mobile-menu";
   function closeDialog() {
@@ -24,13 +26,19 @@
 
   function onSignIn() {
     document.getElementById("sign-in-dialog").showModal();
-    document.getElementById(dialogId).close();
+    closeDialog();
   }
+
+  router.beforeEach(async (to, from) => {
+    closeDialog();
+  });
 </script>
 <template>
   <dialog :id="dialogId" class="p-0">
     <div class="bg-white flex items-center justify-between px-5 py-3">
-      <logo-icon @click="$router.push('/')"></logo-icon>
+      <router-link to="/">
+        <logo-icon></logo-icon>
+      </router-link>
       <close-icon @click="closeDialog" />
     </div>
 
@@ -48,70 +56,60 @@
           </div>
         </div>
         <div class="flex flex-col gap-3 mt-5">
-          <a
-            href="/account/profile"
+          <router-link
+            to="/account/profile"
             class="flex items-center gap-2 bg-white rounded-md py-3 px-6 text-gray-160 font-roboto"
+            ><profile-icon></profile-icon> Profile</router-link
           >
-            <profile-icon></profile-icon>
-            Profile</a
-          >
-          <a
-            href="/account/My%20appointment"
+          <router-link
+            to="/account/My%20appointment"
             class="flex items-center gap-2 bg-white rounded-md py-3 px-6 text-gray-160 font-roboto"
+            ><calendar-icon></calendar-icon> My appointment</router-link
           >
-            <calendar-icon></calendar-icon>
-            My appointment</a
-          >
-          <a
-            href="/account/Notifications"
+          <router-link
+            to="/account/Notifications"
             class="flex items-center gap-2 bg-white rounded-md py-3 px-6 text-gray-160 font-roboto"
+            ><notifications-icon></notifications-icon>
+            Notifications</router-link
           >
-            <notifications-icon></notifications-icon>
-            Notifications</a
-          >
-          <a
-            href="/account/Exit"
+          <router-link
+            to="/account/Exit"
             class="flex items-center gap-2 bg-white rounded-md py-3 px-6 text-gray-160 font-roboto"
-          >
-            <exit-icon></exit-icon>
-            Exit</a
+            ><exit-icon></exit-icon> Exit</router-link
           >
         </div>
       </div>
       <div class="flex flex-col gap-2 m-0 p-0 mt-10">
-        <a
+        <router-link
+          to="/about-us/our-history"
           class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
-          href="/about-us/our-history"
+          >About Us</router-link
         >
-          About Us
-        </a>
-        <a
+        <router-link
+          to="/services"
           class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
-          href="/services"
+          >Services</router-link
         >
-          Services
-        </a>
-        <a
+        <router-link
+          to="/doctors"
           class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
-          href="/doctors"
+          >Doctors</router-link
         >
-          Doctors
-        </a>
-        <a
+        <router-link
+          to="/contact-us"
           class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
-          href="/contact-us"
+          >Contact Us</router-link
         >
-          Contact us
-        </a>
-        <a
+        <router-link
+          to="/faq"
           class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
-          href="/faq"
+          >FAQ</router-link
         >
-          FAQ
-        </a>
       </div>
 
-      <button class="w-full mt-16" @click="onSignIn" v-if="!isSigned">Sign In</button>
+      <button class="w-full mt-16" @click="onSignIn" v-if="!isSigned">
+        Sign In
+      </button>
       <div class="flex items-center justify-center gap-3 my-10">
         <telegram-icon class="text-white" />
         <youtube-icon class="text-white" />

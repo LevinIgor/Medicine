@@ -14,6 +14,10 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+dialog::-webkit-scrollbar{
+  display: none;
+}
+
 @media (max-width: 700px) {
   dialog {
     min-width: 100%;

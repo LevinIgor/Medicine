@@ -1,14 +1,14 @@
 <script setup>
-  import Header from "@/components/Header.vue";
-  import Footer from "@/components/Footer.vue";
-  import Dialogs from "@/components/dialogs/Dialogs.vue";
+  import vHeader from "@/components/Header.vue";
+  import vFooter from "@/components/Footer.vue";
+  import vDialogs from "@/components/dialogs/Dialogs.vue";
 </script>
 
 <template>
-  <Header />
-  <RouterView />
-  <Footer />
-  <Dialogs />
+  <v-header></v-header>
+  <router-view></router-view>
+  <v-footer></v-footer>
+  <v-dialogs></v-dialogs>
 </template>
 
 <style scoped></style>

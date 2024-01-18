@@ -1,6 +1,5 @@
 <script setup>
   import BreadCrumb from "@/components/Breadcrumb.vue";
-  import StarIcon from "@/components/icons/star.vue";
   import StarFilledIcon from "@/components/icons/filled/star.vue";
   import PhoneIcon from "@/components/icons/phone.vue";
   import MailIcon from "@/components/icons/email-close.vue";
@@ -27,19 +26,22 @@
 <template>
   <div class="container">
     <bread-crumb class="my-8" :breadcrumb="breadcrumb" />
-    <div class="grid grid-cols-2 gap-5">
+    <div class="grid md:block grid-cols-2 gap-5">
       <img
         class="w-full object-cover object-top rounded-xl"
         src="../assets/photo/doctor2.jpg"
         alt=""
       />
-      <div class="bg-white rounded-lg py-10 px-6">
+      <div class="bg-white rounded-lg py-10 md:py-6 px-6 md:px-4 md:mt-10">
         <h2 class="text-left">Dr. Sophia Campbell</h2>
         <div class="flex items-center justify-between">
-          <span>Pediatrician</span>
+          <span class="md:text-sm">Pediatrician</span>
           <div class="flex items-center gap-2">
-            <star-filled-icon /><star-filled-icon /><star-filled-icon /><star-filled-icon />
-            <star-filled-icon />
+            <star-filled-icon></star-filled-icon>
+            <star-filled-icon></star-filled-icon>
+            <star-filled-icon></star-filled-icon>
+            <star-filled-icon></star-filled-icon>
+            <star-filled-icon></star-filled-icon>
           </div>
         </div>
         <p class="mt-3">
@@ -59,7 +61,7 @@
         <div class="bg-gray py-4 px-5 flex justify-between mt-8 rounded-lg">
           <div class="flex flex-col">
             <span class="gray-200">Consultation</span>
-            <span class="text-4xl font-medium">$60</span>
+            <span class="text-4xl md:text-2xl font-medium">$60</span>
           </div>
 
           <button>Book Now</button>
@@ -69,7 +71,7 @@
 
     <v-tabs class="mt-24" :is-vertical="false">
       <v-tab title="Experience">
-        <div class="grid grid-cols-12 gap-6">
+        <div class="grid md:block grid-cols-12 gap-6">
           <div class="col-span-8">
             <p>
               Dr. Sophia Campbell is a highly qualified pediatrician with many
@@ -92,7 +94,7 @@
               to communicate with children help create a friendly atmosphere
               where each patient feels comfortable and supported.
             </p>
-            <p mt-3>
+            <p class="mt-3">
               Dr. Sophia Campbell always strives to provide an individualized
               approach to each patient, understanding the uniqueness and
               characteristics of each little person, and assists parents in the
@@ -102,7 +104,7 @@
             </p>
           </div>
           <img
-            class="col-span-4 w-full object-cover rounded-xl"
+            class="col-span-4 w-full object-cover rounded-xl md:mt-5"
             src="../assets/photo/experience1.jpg"
             alt=""
           />

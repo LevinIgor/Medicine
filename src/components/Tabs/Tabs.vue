@@ -26,11 +26,11 @@
   <div class="grid grid-cols-12 gap-5 md:block" v-if="isVertical">
     <ul class="flex flex-col gap-5 col-span-3">
       <li
-        class="cursor-pointer flex items-center gap-2 py-3 px-4 rounded-md bg-white text-gray-160 font-roboto select-none"
+        class="cursor-pointer flex items-center gap-2 py-3 px-4 rounded-md bg-white text-gray-160 font-roboto select-none whitespace-nowrap"
         :class="{ active: activeTab === title }"
         v-for="(title, index) in titles"
         :key="index"
-        @click="(activeTab = title), $router.push({ params: { tab: title } })"
+        @click="(activeTab = title), $router.update({ params: { tab: title } })"
       >
         <component :is="getIcon(title)" class="w-5 h-5" />
         {{ title }}
@@ -42,13 +42,15 @@
     </div>
   </div>
   <div class="flex flex-col" v-else>
-    <ul class="w-full flex items-center justify-between gap-5 overflow-x-scroll">
+    <ul
+      class="w-full flex items-center justify-between gap-5 overflow-x-scroll"
+    >
       <li
-        class="w-full cursor-pointer py-3 px-8 rounded-md bg-white text-gray-160 font-roboto select-none text-center"
+        class="w-full cursor-pointer py-3 px-8 rounded-md bg-white text-gray-160 font-roboto select-none text-center whitespace-nowrap"
         :class="{ active: activeTab === title }"
         v-for="(title, index) in titles"
         :key="index"
-        @click="(activeTab = title), $router.push({ params: { tab: title } })"
+        @click="(activeTab = title), $router.update({ params: { tab: title } })"
       >
         {{ title }}
       </li>
