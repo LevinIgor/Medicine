@@ -57,8 +57,8 @@
     </section>
 
     <!-- Section 2 -->
-    <section class="bg-white py-24">
-      <div class="container pt-20 flex flex-col items-center">
+    <section class="bg-white py-24 md:py-10">
+      <div class="container flex flex-col items-center">
         <h2>Prices for Diagnostics</h2>
         <vSearchInput class="mt-5 max-w-md" is-bg-gray />
         <v-accordion class="mt-10"></v-accordion>
@@ -69,7 +69,7 @@
     <section class="container py-24">
       <v-tabs :is-vertical="false">
         <v-tab title="Services">
-          <div class="grid grid-cols-7 gap-3">
+          <div class="grid md:block grid-cols-7 gap-3">
             <div class="col-span-5 flex flex-col justify-between">
               <p>
                 Our diagnostic service is a key step in determining your health.
@@ -101,7 +101,7 @@
               </p>
             </div>
             <img
-              class="col-span-2 w-full object-cover rounded-lg"
+              class="col-span-2 w-full object-cover rounded-lg md:mt-10"
               src="../assets/photo/serviceTab1.jpg"
               alt=""
             />

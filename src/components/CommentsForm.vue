@@ -30,12 +30,12 @@
           <button class="btn-secondary">Cancel</button>
         </div>
       </form>
-      <span class="text-sm text-gray-200 block mt-5 max-w-md"
+      <span class="text-sm md:text-xs text-gray-200 block mt-5 max-w-md"
         >You cannot leave a review because you are not logged in to your
         account</span
       >
     </div>
-    <div class="flex flex-col gap-24 mt-10">
+    <div class="flex flex-col gap-24 mt-20">
       <div class="">
         <div class="flex">
           <img

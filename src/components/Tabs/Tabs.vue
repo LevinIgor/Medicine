@@ -42,9 +42,9 @@
     </div>
   </div>
   <div class="flex flex-col" v-else>
-    <ul class="w-full flex items-center justify-between gap-5">
+    <ul class="w-full flex items-center justify-between gap-5 overflow-x-scroll">
       <li
-        class="w-full cursor-pointer py-3 rounded-md bg-white text-gray-160 font-roboto select-none text-center"
+        class="w-full cursor-pointer py-3 px-8 rounded-md bg-white text-gray-160 font-roboto select-none text-center"
         :class="{ active: activeTab === title }"
         v-for="(title, index) in titles"
         :key="index"
