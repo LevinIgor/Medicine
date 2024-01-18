@@ -1,7 +1,7 @@
 <script setup>
   import BreadCrumb from "@/components/Breadcrumb.vue";
   import vSearchInput from "@/components/vSearchInput.vue";
-  import Accordion from "@/components/Accordion.vue";
+  import vAccordion from "@/components/Accordion.vue";
   import vTabs from "@/components/Tabs/Tabs.vue";
   import vTab from "@/components/Tabs/Tab.vue";
   import CommentsForm from "@/components/CommentsForm.vue";
@@ -29,7 +29,7 @@
     <!-- Section 1 -->
     <section class="container pb-20">
       <bread-crumb class="mt-7" :breadcrumb="breadcrumb" />
-      <div class="grid grid-cols-2 mt-10 gap-5">
+      <div class="grid md:block grid-cols-2 mt-10 gap-5">
         <img
           class="w-full object-cover rounded-lg"
           src="../assets/photo/service1.jpg"
@@ -61,7 +61,7 @@
       <div class="container pt-20 flex flex-col items-center">
         <h2>Prices for Diagnostics</h2>
         <vSearchInput class="mt-5 max-w-md" is-bg-gray />
-        <Accordion class="mt-10" />
+        <v-accordion class="mt-10"></v-accordion>
       </div>
     </section>
 

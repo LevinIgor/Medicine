@@ -10,7 +10,7 @@
       class="flex items-center justify-between bg-gray rounded-lg p-5 cursor-pointer select-none"
       @click="isOpen = !isOpen"
     >
-      <span class="font-semibold text-2xl">Laboratory diagnostics</span>
+      <span class="font-semibold text-2xl md:text-lg">Laboratory diagnostics</span>
       <chevron-down-icon
         class="transition duration-300 ease-in-out"
         :style="isOpen ? 'transform:rotate(180deg)' : null"
@@ -21,11 +21,11 @@
         class="flex items-center justify-between border-top p-5"
         v-for="i of 10"
       >
-        <span class="font-medium text-lg"
+        <span class="font-medium text-lg md:text-sm"
           >Ultrasonography of abdominal organs</span
         >
         <span class="font-medium text-lg text-gray-180">$60</span>
-        <span class="font-medium text-base underline text-blue-200"
+        <span class="font-medium text-base underline text-blue-200 md:hidden"
           >Book Now</span
         >
       </div>
