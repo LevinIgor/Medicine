@@ -11,7 +11,7 @@
     </p>
     <v-menu class="mt-9" :items="['All', 'Planned', 'Completed', 'Canceled']" />
 
-    <div class="flex flex-col gap-5 mt-6">
+    <div class="flex flex-col gap-10 mt-6">
       <appointment-card></appointment-card>
       <appointment-card></appointment-card>
       <appointment-card></appointment-card>

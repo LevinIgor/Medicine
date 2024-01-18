@@ -6,9 +6,11 @@
   import vMyAppointment from "@/components/Account/MyAppointment.vue";
   import vNotifications from "@/components/Account/Notifications.vue";
   import { signOut } from "@/supabase/auth.js";
-
-  function onSignOut() {
+  import { useRouter } from "vue-router";
+  const router = useRouter();
+  async function onSignOut() {
     signOut();
+    router.push("/");
   }
 </script>
 <template>
@@ -22,12 +24,7 @@
         ><v-notifications></v-notifications
       ></v-tab>
       <v-tab title="Exit" icon="exit">
-        <button
-          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          @click="onSignOut"
-        >
-          Sign out
-        </button>
+        <button class="" @click="onSignOut">Sign out</button>
       </v-tab>
     </v-tabs>
   </div>

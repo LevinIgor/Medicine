@@ -27,9 +27,9 @@ button:disabled {
   cursor: not-allowed;
 }
 
-@media (max-width:600px) {
-  button{
-    padding: 14px 32px;
+@media (max-width: 600px) {
+  button {
+    padding: 12px 28px;
     font-size: 14px;
   }
 }

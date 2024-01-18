@@ -54,12 +54,11 @@
         </ul>
       </nav>
       <div class="block md:hidden">
-        <div
+        <router-link
           class="flex items-center gap-5"
           v-if="isSigned"
-          @click="$router.push({ name: 'account', params: { tab: 'profile' } })"
-        >
-          <div class="flex flex-col text-sm">
+          :to="{ name: 'account', params: { tab: 'profile' } }"
+          ><div class="flex flex-col text-sm">
             <span>Lorem.</span> <span>Lorem</span>
           </div>
           <img
@@ -67,7 +66,8 @@
             src="../assets/photo/doctor1.jpg"
             alt=""
           />
-        </div>
+        </router-link>
+
         <button @click="showSignInModal" v-else>Sign In</button>
       </div>
       <div class="hidden md:block" @click="openMobileMenu">

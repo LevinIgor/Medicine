@@ -30,7 +30,7 @@
         :class="{ active: activeTab === title }"
         v-for="(title, index) in titles"
         :key="index"
-        @click="(activeTab = title), $router.update({ params: { tab: title } })"
+        @click="(activeTab = title), $router.push({ params: { tab: title } })"
       >
         <component :is="getIcon(title)" class="w-5 h-5" />
         {{ title }}
@@ -50,7 +50,7 @@
         :class="{ active: activeTab === title }"
         v-for="(title, index) in titles"
         :key="index"
-        @click="(activeTab = title), $router.update({ params: { tab: title } })"
+        @click="(activeTab = title), $router.push({ params: { tab: title } })"
       >
         {{ title }}
       </li>

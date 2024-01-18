@@ -12,9 +12,9 @@
   const activeItem = ref(0);
 </script>
 <template>
-  <menu class="flex items-center justify-between gap-5 w-full pl-0">
+  <menu class="flex items-center justify-between gap-5 w-full pl-0 overflow-scroll">
     <span
-      class="bg-white w-full text-center text-lg py-2 rounded-lg cursor-pointer select-none hover:bg-blue-200 hover:text-white"
+      class="bg-white w-full text-center text-lg py-2 rounded-lg cursor-pointer select-none hover:bg-blue-200 hover:text-white px-6"
       :class="{ active: activeItem === index }"
       v-for="(item, index) in items"
       :key="index"
