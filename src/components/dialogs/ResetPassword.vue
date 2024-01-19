@@ -36,7 +36,7 @@
       @click="closeModal"
     />
 
-    <h3 class="text-center color-gray-200">Forgot password</h3>
+    <h3 class="text-center color-gray-200 md:mt-10">Forgot password</h3>
     <p class="text-center color-gray-180 font-normal">
       Enter your email address
     </p>

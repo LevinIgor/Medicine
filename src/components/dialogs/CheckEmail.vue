@@ -15,7 +15,7 @@
       @click="closeModal"
     />
 
-    <h3 class="text-center color-gray-200">Check your email</h3>
+    <h3 class="text-center color-gray-200 md:mt-10">Check your email</h3>
     <p class="text-center color-gray-180 font-normal mt-3">
       To set a new password, you have been sent an email
       <span class="font-semibold">{{ store.getEmailReset }}</span

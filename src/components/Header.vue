@@ -71,7 +71,7 @@
         <button @click="showSignInModal" v-else>Sign In</button>
       </div>
       <div class="hidden md:block" @click="openMobileMenu">
-        <burger-icon />
+        <burger-icon class="w-full"></burger-icon>
       </div>
     </div>
   </header>

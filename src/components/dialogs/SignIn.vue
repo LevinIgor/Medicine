@@ -42,8 +42,8 @@
       class="absolute top-5 right-5 cursor-pointer"
       @click="closeModal"
     />
-    <h3 class="text-center text-gray-200">Sign In</h3>
-    <p class="text-center mt-3 text-gray-180 font-normal">
+    <h3 class="text-center text-gray-200 md:mt-10">Sign In</h3>
+    <p class="text-center mt-3 text-gray-180 font-normal ">
       Sign Up and become a part of our community
     </p>
     <form @submit.prevent="signIn" class="mt-6 flex flex-col">

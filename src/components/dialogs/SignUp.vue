@@ -12,6 +12,10 @@
     document.getElementById("sign-up-dialog").close();
   }
 
+  function openSuccessDialog() {
+    document.getElementById("success-sign-up-dialog").showModal();
+  }
+
   function goToSignIn() {
     document.getElementById("sign-up-dialog").close();
     document.getElementById("sign-in-dialog").showModal();
@@ -19,15 +23,14 @@
 
   async function onSignUp() {
     const btn = document.querySelector("#sign-up-btn");
+    openSuccessDialog();
     btn.disabled = true;
     const response = await signUp(email.value, password.value, name.value);
     btn.disabled = false;
-    alert(
-      response.error
-        ? response.error.message
-        : "Check your email for the confirmation link"
-    );
-    closeDialog();
+    setTimeout(() => {
+      closeDialog();
+      openSuccessDialog();
+    }, 1000);
   }
 </script>
 <template>
@@ -36,8 +39,8 @@
       class="absolute top-5 right-5 cursor-pointer"
       @click="closeDialog"
     />
-    <h3 class="text-center color-gray-200">Sign Up</h3>
-    <p class="text-center mt-3 color-gray-180 font-normal">
+    <h3 class="text-center text-gray-200 md:mt-10">Sign Up</h3>
+    <p class="text-center mt-3 text-gray-180 font-normal">
       Sign Up and become a part of our community
     </p>
     <form @submit.prevent="onSignUp" class="mt-5 flex flex-col">
@@ -78,18 +81,16 @@
 
       <button class="w-full mt-10" id="sign-up-btn">Sign Up</button>
     </form>
-    <p class="mt-16 color-gray-160 text-sm font-normal text-center">
+    <p class="mt-16 text-gray-160 text-sm font-normal text-center">
       By continuing, I confirm that I have read and agree to the
-      <span class="color-blue-200 font-medium underline cursor-pointer">
+      <span class="text-blue-200 font-medium underline cursor-pointer">
         Terms and Conditions and Privacy Policy
       </span>
     </p>
 
-    <p class="mt-8 text-center font-normal color-gray-160">
+    <p class="mt-8 text-center font-normal text-gray-160">
       Already have an account?
-      <span
-        class="color-blue-200 font-medium cursor-pointer"
-        @click="goToSignIn"
+      <span class="text-blue-200 font-medium cursor-pointer" @click="goToSignIn"
         >Sign In</span
       >
     </p>

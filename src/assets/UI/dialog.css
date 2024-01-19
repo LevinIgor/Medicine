@@ -23,7 +23,6 @@ dialog::-webkit-scrollbar{
     min-width: 100%;
     min-height: 100%;
     border-radius: 0;
-    background-color: var(--background);
     padding: 1rem;
     margin: 0;
     top: 0;
