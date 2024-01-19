@@ -57,7 +57,7 @@
         </div>
         <div class="flex flex-col gap-3 mt-5">
           <router-link
-            to="/account/profile"
+            to="/account/Profile"
             class="flex items-center gap-2 bg-white rounded-md py-3 px-6 text-gray-160 font-roboto"
             ><profile-icon></profile-icon> Profile</router-link
           >

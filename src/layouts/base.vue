@@ -18,11 +18,11 @@
 <template>
   <main class="bg-gray">
     <section class="container flex flex-col">
-      <Breadcrumb class="my-8" :breadcrumb="breadcrumb" />
+      <Breadcrumb class="my-8 md:my-4" :breadcrumb="breadcrumb" />
       <h2>{{ title }}</h2>
       <slot />
 
-      <Appointment class="my-24" />
+      <Appointment class="my-24 md:my-16" />
     </section>
   </main>
 </template>
