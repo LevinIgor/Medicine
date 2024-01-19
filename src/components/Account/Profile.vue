@@ -12,7 +12,7 @@
       </div>
       <img
         class="w-9 h-9 object-cover rounded-full"
-        src="../../assets/photo/doctor4.jpg"
+        src="@/assets/photo/doctor4.jpg"
         alt=""
       />
     </div>

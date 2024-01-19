@@ -39,7 +39,7 @@
 </script>
 <template>
   <header class="p-5 md:py-3 md:px-0 bg-white w-full box-border">
-    <div class="container flex items-center justify-between">
+    <div class="container flex items-top justify-between">
       <logo-icon class="cursor-pointer" @click="$router.push('/')" />
 
       <nav class="block md:hidden">
