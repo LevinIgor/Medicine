@@ -54,6 +54,46 @@ const router = createRouter({
       component: () => import("@/views/AccountView.vue"),
     },
     {
+      path: "/account/profile/edit/avatar",
+      name: "profile-photo-edit",
+      component: () => import("@/views/Profile/AvatarEditView.vue"),
+    },
+    {
+      path: "/account/profile/edit/name",
+      name: "profile-name-edit",
+      component: () => import("@/views/Profile/NameEditView.vue"),
+    },
+    {
+      path: "/account/profile/edit/phone",
+      name: "profile-phone-edit",
+      component: () => import("@/views/Profile/PhoneEditView.vue"),
+    },
+    {
+      path: "/account/profile/edit/email",
+      name: "profile-email-edit",
+      component: () => import("@/views/Profile/EmailEditView.vue"),
+    },
+    {
+      path: "/account/profile/edit/sex",
+      name: "profile-sex-edit",
+      component: () => import("@/views/Profile/SexEditView.vue"),
+    },
+    {
+      path: "/account/profile/edit/dateOfBirth",
+      name: "profile-dateOfBirth-edit",
+      component: () => import("@/views/Profile/BirthEditView.vue"),
+    },
+    {
+      path: "/account/profile/edit/address",
+      name: "profile-address-edit",
+      component: () => import("@/views/Profile/AddressEditView.vue"),
+    },
+    {
+      path: "/account/profile/edit/password",
+      name: "profile-password-edit",
+      component: () => import("@/views/Profile/PasswordEditView.vue"),
+    },
+    {
       path: "/account/reception/:id",
       name: "reception",
       component: () => import("@/views/ReceptionView.vue"),

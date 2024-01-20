@@ -32,7 +32,7 @@
 </script>
 <template>
   <div>
-    <label class="font-medium" v-if="label" :for="inputId"
+    <label class="font-medium md:text-sm" v-if="label" :for="inputId"
       >{{ label }}
       <span class="font-bold text-red" v-if="required">*</span></label
     >

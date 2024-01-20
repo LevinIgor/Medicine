@@ -16,13 +16,13 @@
 <template>
   <div class="flex items-center gap-2">
     <div class="" v-for="(item, i) in breadcrumb">
-      <a
+      <router-link
         class="text-gray-200"
         :class="{ active: isLastItem(i) }"
-        :href="item.path"
+        :to="item.path"
       >
-        {{ item.name }}</a
-      >
+        {{ item.name }}
+      </router-link>
       <arrow-right-icon class="arrow" v-if="!isLastItem(i)" />
     </div>
   </div>

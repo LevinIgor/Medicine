@@ -2,10 +2,13 @@
   import logoIcon from "@/components/icons/logo.vue";
   import BurgerIcon from "@/components/icons/burger.vue";
   import useStore from "@/store";
-  const store = useStore();
+
   import { computed } from "vue";
 
+  const store = useStore();
+
   const isSigned = computed(() => store.getIsSigned);
+  const user = computed(() => store.getUser);
 
   const showSignInModal = () =>
     document.getElementById("sign-in-dialog").showModal();
@@ -13,7 +16,7 @@
   const menu = [
     {
       name: "About Us",
-      link: "/about-us/our-history",
+      link: "/about-us/Our%20History",
     },
     {
       name: "Doctors",
@@ -57,13 +60,13 @@
         <router-link
           class="flex items-center gap-5"
           v-if="isSigned"
-          :to="{ name: 'account', params: { tab: 'profile' } }"
+          :to="{ name: 'account', params: { tab: 'Profile' } }"
           ><div class="flex flex-col text-sm">
             <span>Lorem.</span> <span>Lorem</span>
           </div>
           <img
             class="w-14 h-14 object-cover rounded-full"
-            src="@/assets/photo/doctor1.jpg"
+            :src="user.avatar_url"
             alt="avatar user icon"
             lazy="true"
           />

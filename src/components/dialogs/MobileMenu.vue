@@ -18,6 +18,7 @@
   const router = useRouter();
 
   const dialogId = "mobile-menu";
+  const user = computed(() => store.getUser);
   function closeDialog() {
     document.getElementById(dialogId).close();
   }
@@ -47,11 +48,11 @@
         <div class="flex items-center gap-2">
           <img
             class="w-14 h-14 rounded-full object-cover object-center"
-            src="../../assets/photo/person1.jpg"
+            :src="user.avatar_url"
             alt=""
           />
           <div class="flex flex-col">
-            <span class="text-lg font-semibold">Robert Pattison</span>
+            <span class="text-lg font-semibold">{{ user.name }}</span>
             <span class="text-sm font-normal">Patient</span>
           </div>
         </div>

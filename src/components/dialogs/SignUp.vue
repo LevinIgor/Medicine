@@ -22,15 +22,9 @@
   }
 
   async function onSignUp() {
-    const btn = document.querySelector("#sign-up-btn");
+    await signUp(email.value, password.value, name.value);
+    closeDialog();
     openSuccessDialog();
-    btn.disabled = true;
-    const response = await signUp(email.value, password.value, name.value);
-    btn.disabled = false;
-    setTimeout(() => {
-      closeDialog();
-      openSuccessDialog();
-    }, 1000);
   }
 </script>
 <template>

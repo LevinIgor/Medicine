@@ -33,10 +33,12 @@
     }
   );
   provide("activeTab", activeTab);
+
+  const width = window.innerWidth;
 </script>
 <template>
   <div class="grid grid-cols-12 gap-5 md:block" v-if="isVertical">
-    <ul class="flex flex-col gap-5 col-span-3" v-if="needTitle">
+    <ul class="flex flex-col gap-5 col-span-3" v-if="width > 600 || needTitle">
       <li
         class="cursor-pointer flex items-center gap-2 py-3 px-4 rounded-md bg-white text-gray-160 font-roboto select-none whitespace-nowrap"
         :class="{ active: activeTab === title }"
@@ -56,7 +58,6 @@
   <div class="flex flex-col" v-else>
     <ul
       class="w-full flex items-center justify-between gap-5 overflow-x-scroll"
-      v-if="needTitle"
     >
       <li
         class="w-full cursor-pointer py-3 px-8 rounded-md bg-white text-gray-160 font-roboto select-none text-center whitespace-nowrap"

@@ -19,7 +19,9 @@
       ></v-tab>
       <v-tab title="Exit" icon="exit">
         <div class="h-40 w-full flex items-center justify-center">
-          <button class="" @click="signOut(), $router.push('/')">Sign out</button>
+          <button class="" @click="signOut(), $router.push('/')">
+            Sign out
+          </button>
         </div>
       </v-tab>
     </v-tabs>

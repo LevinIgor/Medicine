@@ -4,6 +4,7 @@ const useStore = defineStore("store", {
   state: () => ({
     resetPasswordEmail: "",
     isSigned: false,
+    user: {},
   }),
   actions: {
     setResetPasswordEmail(email) {
@@ -15,6 +16,9 @@ const useStore = defineStore("store", {
     onSignOut() {
       this.isSigned = false;
     },
+    setUserData(user) {
+      this.user = user;
+    },
   },
   getters: {
     getEmailReset() {
@@ -22,6 +26,9 @@ const useStore = defineStore("store", {
     },
     getIsSigned() {
       return this.isSigned;
+    },
+    getUser() {
+      return this.user;
     },
   },
 });

@@ -2,6 +2,10 @@
   import vHeader from "@/components/Header.vue";
   import vFooter from "@/components/Footer.vue";
   import vDialogs from "@/components/dialogs/Dialogs.vue";
+
+  import { getUserData } from "@/supabase/user.js";
+
+  getUserData();
 </script>
 
 <template>
