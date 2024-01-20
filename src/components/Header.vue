@@ -63,8 +63,9 @@
           </div>
           <img
             class="w-14 h-14 object-cover rounded-full"
-            src="../assets/photo/doctor1.jpg"
-            alt=""
+            src="@/assets/photo/doctor1.jpg"
+            alt="avatar user icon"
+            lazy="true"
           />
         </router-link>
 

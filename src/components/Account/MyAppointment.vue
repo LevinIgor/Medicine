@@ -5,7 +5,7 @@
 <template>
   <div>
     <h2>My appointment</h2>
-    <p class="text-gray-160 max-w-lg text-center mx-auto mt-3 flex-nowrap">
+    <p class="text-gray-160 max-w-lg text-center mx-auto mt-3 md:mt-0 flex-nowrap">
       You will be able to view all your upcoming and past doctor's appointments,
       get acquainted with the dates and times of previous visits
     </p>

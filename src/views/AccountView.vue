@@ -8,7 +8,7 @@
   import { signOut } from "@/supabase/auth.js";
 </script>
 <template>
-  <div class="container py-24 md:py-0">
+  <div class="container py-24 md:py-0 md:pb-10">
     <v-tabs :need-title="false">
       <v-tab title="Profile" icon="profile"> <v-profile></v-profile></v-tab>
       <v-tab title="My appointment" icon="calendar"

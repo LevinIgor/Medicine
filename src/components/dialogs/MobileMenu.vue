@@ -35,7 +35,7 @@
 </script>
 <template>
   <dialog :id="dialogId" class="p-0">
-    <div class="bg-white flex items-top justify-between px-2 py-3">
+    <div class="bg-white flex items-top justify-between px-4 py-3">
       <router-link to="/">
         <logo-icon></logo-icon>
       </router-link>

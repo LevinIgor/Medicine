@@ -48,7 +48,8 @@ body {
   position: relative;
 
   @media (max-width: 768px) {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
   }
 }
