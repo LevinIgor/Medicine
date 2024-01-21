@@ -68,7 +68,7 @@
     >
       <div class="flex flex-col">
         <span class="font-semibold text-gray-180">Date of birth</span>
-        <span class="text-gray-200">{{ user.birth || "empty" }}</span>
+        <span class="text-gray-200">{{ user.dateOfBirth || "empty" }}</span>
       </div>
       <arrow-left class="text-gray-140" />
     </div>

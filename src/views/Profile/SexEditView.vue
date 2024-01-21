@@ -1,7 +1,7 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
   import { ref } from "vue";
-  import { updateUserPhone } from "@/supabase/user";
+  import { updateUserSex } from "@/supabase/user";
   import vSelect from "@/components/vSelect.vue";
 
   const breadcrumb = [
@@ -18,7 +18,7 @@
   const sex = ref("");
 
   function onSave() {
-    if (phoneRegExp.test(phone.value)) updateUserPhone(phone.value);
+    if (sex.value.length > 0) updateUserSex(sex.value);
   }
 </script>
 <template>
@@ -33,7 +33,10 @@
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, aliquam.
       </p>
-      <v-select></v-select>
+      <v-select
+        :options="['Male', 'Female', 'Non-binary']"
+        @on-change="sex = $event"
+      ></v-select>
       <button class="w-full mt-5" @click="onSave">Save Changes</button>
       <button
         class="w-full btn-secondary"

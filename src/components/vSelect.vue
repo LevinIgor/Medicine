@@ -2,19 +2,21 @@
   import { ref } from "vue";
 
   const props = defineProps({
-    selected: {
-      type: String,
+    options: {
+      type: Array,
       required: true,
-      default: "",
+      default: [],
     },
   });
 
-  const visible = ref(false);
+  const emits = defineEmits(["onChange"]);
 
-  function onblur(e) {
+  const visible = ref(false);
+  const selected = ref("");
+  function onblur() {
     setTimeout(() => {
       visible.value = false;
-    }, 0);
+    }, 100);
   }
 </script>
 <template>
@@ -25,26 +27,25 @@
       tabindex="1"
       @blur="onblur"
     >
-      {{ selected }}
+      {{ selected || "Select option" }}
     </div>
     <div
-      title="option"
       class="flex flex-col gap-2 text-sm bg-gray w-full px-1 pt-2 pb-4 dropdown max-h-40 overflow-y-scroll rounded-md"
       v-if="visible"
     >
       <div
-        class="p-2 bg-white rounded-md text-sm font-roboto text-gray-160 font-light hover:bg-blue-160"
-        @click="selected = $event.target.textContent"
+        class="p-2 bg-white rounded-md text-sm font-roboto text-gray-160 font-light hover:bg-blue-160 cursor-pointer"
+        v-for="(option, index) in options"
+        :key="index"
+        @click="(selected = option), emits('onChange', option)"
       >
-        Option 1
+        {{ option }}
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .select {
-  }
   .dropdown {
     position: absolute;
     bottom: -10%;

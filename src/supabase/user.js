@@ -7,8 +7,9 @@ async function getUserId() {
 
   return new Promise(async resolve => {
     const { data } = await supabase.auth.getUser();
-    if (!data) resolve(null);
-    userId = data.user.id;
+
+    if (data.user === null) resolve();
+    else userId = data.user.id;
     resolve(userId);
   });
 }
@@ -73,4 +74,32 @@ export const updateUserEmail = async email => {
   });
 
   console.log(authResponse);
+};
+
+export const updateUserSex = async sex => {
+  await getUserId();
+  await supabase.from("users").update({ sex }).eq("id", userId);
+  console.log("update");
+};
+
+export const updateUserDateOfBirth = async dateOfBirth => {
+  await getUserId();
+  await supabase.from("users").update({ dateOfBirth }).eq("id", userId);
+  console.log("update");
+};
+
+export const updateUserAddress = async address => {
+  await getUserId();
+  await supabase.from("users").update({ address }).eq("id", userId);
+  console.log("update");
+};
+
+export const updateUserPassword = async password => {
+  await getUserId();
+  console.log(password);
+  const { data, error } = await supabase.auth.updateUser({
+    password,
+  });
+
+  console.log("update", data, error);
 };
