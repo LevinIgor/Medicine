@@ -11,6 +11,8 @@
     maxlength: Number,
     minlength: Number,
     autocomplete: String,
+    pattern: String,
+    incorrect: Boolean,
   });
 
   const emit = defineEmits(["update:modelValue"]);
@@ -31,7 +33,7 @@
   });
 </script>
 <template>
-  <div>
+  <div :class="{ incorrect: incorrect }">
     <label class="font-medium md:text-sm" v-if="label" :for="inputId"
       >{{ label }}
       <span class="font-bold text-red" v-if="required">*</span></label
@@ -46,6 +48,7 @@
         :required="required"
         :value="modelValue"
         :autocomplete="autocomplete"
+        :pattern="pattern"
         @input="$emit('update:modelValue', $event.target.value)"
       />
 
@@ -56,6 +59,9 @@
         @click="onShowPassword"
       />
     </div>
+    <span class="text-xs font-thin" v-show="incorrect"
+      >Please enter a valid data</span
+    >
   </div>
 </template>
 
@@ -67,5 +73,20 @@
     transform: translateY(-50%);
     color: var(--gray-160);
     cursor: pointer;
+  }
+
+  .incorrect {
+    input {
+      border: 1px solid red;
+      background-image: linear-gradient(#ffffff, #ff000009);
+
+      &:focus {
+        outline: 1px solid #ff3f3f;
+      }
+    }
+
+    span {
+      color: red;
+    }
   }
 </style>

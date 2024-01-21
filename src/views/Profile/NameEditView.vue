@@ -18,7 +18,7 @@
 </script>
 <template>
   <BaseLayout :breadcrumb="breadcrumb" title="Name" :need-appointment="false">
-    <div class="bg-white py-6 px-4 rounded-md flex flex-col gap-43">
+    <div class="bg-white py-6 px-4 rounded-md flex flex-col gap-4 max-w-sm mx-auto">
       <p>
         Update your data to ensure the security and accuracy of the information
         in your profile
@@ -32,7 +32,7 @@
       />
 
       <button class="w-full mt-5" @click="updateUserName(name)">Save Changes</button>
-      <button class="w-full btn-secondary">Cancel</button>
+      <button class="w-full btn-secondary" @click="$router.push('/account/Profile')">Cancel</button>
     </div>
   </BaseLayout>
 </template>

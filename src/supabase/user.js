@@ -53,3 +53,24 @@ export const updateUserName = async name => {
     .update({ name })
     .eq("id", userId);
 };
+
+export const updateUserPhone = async phone => {
+  await getUserId();
+
+  const { data, error } = await supabase
+    .from("users")
+    .update({ phone })
+    .eq("id", userId);
+};
+
+export const updateUserEmail = async email => {
+  await getUserId();
+
+  // await supabase.from("users").update({ email }).eq("id", userId);
+
+  const authResponse = await supabase.auth.updateUser({
+    email: email,
+  });
+
+  console.log(authResponse);
+};
