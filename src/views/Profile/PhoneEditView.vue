@@ -57,8 +57,8 @@
     const isSuccessful = await updateUserPhone(phone.value);
 
     dialogText.title = isSuccessful
-      ? "Name Successfully Changed!"
-      : "Error during name update!";
+      ? "Phone Number Successfully Changed!"
+      : "Error during phone number update!";
     dialogText.subtitle = isSuccessful
       ? "Your data has been updated"
       : "Try reloading the page, or try again after a while";
@@ -68,8 +68,6 @@
     showDialog();
     if (isSuccessful) updateUserDataState(phone.value);
   }
-
-  function onSave() {}
 
   watch(phone, _phone => {
     isValid.value = phoneRegExp.test(_phone);

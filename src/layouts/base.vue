@@ -24,7 +24,7 @@
   <main class="bg-gray pb-10">
     <section class="container flex flex-col">
       <Breadcrumb class="my-8 md:my-4" :breadcrumb="breadcrumb" />
-      <h2>{{ title }}</h2>
+      <h2 class="md:mt-10">{{ title }}</h2>
       <slot />
 
       <Appointment class="my-24 md:my-16" v-if="needAppointment" />

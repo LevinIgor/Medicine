@@ -1,15 +1,17 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
-  import { ref, watch } from "vue";
+  import { ref, watch, reactive } from "vue";
   import { updateUserPassword } from "@/supabase/user";
   import vInput from "@/components/vInput.vue";
+  import EditInfo from "@/components/dialogs/EditInfo.vue";
+
   const breadcrumb = [
     {
       name: "Profile",
       path: "/account/Profile",
     },
     {
-      name: "Edit Password",
+      name: "Password",
       path: "/account/Profile",
     },
   ];
@@ -20,12 +22,44 @@
   const incorrectNewPassword = ref(false);
   const incorrectConfirmNewPassword = ref(false);
 
-  function onReset() {
-    updateUserPassword(newPassword.value)
-    
+  const dialogText = reactive({
+    title: "",
+    subtitle: "",
+    successful: true,
+  });
+
+  function turnOffBtn() {
+    document.getElementById("btn-action").disabled = true;
   }
 
-  const passwordRegExp = RegExp("^[a-z0-9]{6,28}$", "i");
+  function turnOnBtn() {
+    document.getElementById("btn-action").disabled = false;
+  }
+
+  function showDialog() {
+    document.getElementById("dialog-success-edit").showModal();
+  }
+
+  async function onUpdate() {
+    if (incorrectNewPassword.value || incorrectConfirmNewPassword.value) return;
+
+    turnOffBtn();
+
+    const isSuccessful = await updateUserPassword(newPassword.value);
+
+    dialogText.title = isSuccessful
+      ? "Password Successfully Changed!"
+      : "Error during password update!";
+    dialogText.subtitle = isSuccessful
+      ? "Your data has been updated"
+      : "Try reloading the page, or try again after a while";
+    dialogText.successful = isSuccessful;
+
+    turnOnBtn();
+    showDialog();
+  }
+
+  const passwordRegExp = RegExp("^[a-z0-9]{8,28}$", "i");
   watch(newPassword, val => {
     incorrectNewPassword.value = !passwordRegExp.test(val);
   });
@@ -37,6 +71,11 @@
   });
 </script>
 <template>
+  <edit-info
+    :title="dialogText.title"
+    :subtitle="dialogText.subtitle"
+    :successful="dialogText.successful"
+  ></edit-info>
   <BaseLayout
     :breadcrumb="breadcrumb"
     title="Password"
@@ -49,7 +88,7 @@
         Update your data to ensure the security and accuracy of the information
         in your profile
       </p>
-      <form @submit.prevent="onReset" class="flex flex-col gap-3 mt-5">
+      <form @submit.prevent="onUpdate" class="flex flex-col gap-3 mt-5">
         <input
           type="email"
           required
@@ -59,7 +98,7 @@
         />
 
         <vInput
-          label="Password"
+          label="New Password"
           type="password"
           placeholder="Enter password"
           autocomplete="new-password"
@@ -71,7 +110,7 @@
         />
 
         <vInput
-          label="Password"
+          label="Confirm Password"
           type="password"
           placeholder="Enter password"
           autocomplete="new-password"
@@ -82,9 +121,10 @@
           :incorrect="incorrectConfirmNewPassword"
         />
 
-        <button class="w-full mt-10">Reset password</button>
+        <button id="btn-action" class="w-full mt-10">Reset password</button>
       </form>
       <button
+        id="btn-action"
         class="w-full btn-secondary"
         @click="$router.push('/account/Profile')"
       >
