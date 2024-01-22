@@ -62,7 +62,7 @@
           v-if="isSigned"
           :to="{ name: 'account', params: { tab: 'Profile' } }"
           ><div class="flex flex-col text-sm">
-            <span>Lorem.</span> <span>Lorem</span>
+            <span>{{ user.name }}</span>
           </div>
           <img
             class="w-14 h-14 object-cover rounded-full"

@@ -22,6 +22,7 @@
 
   function onReset() {
     updateUserPassword(newPassword.value)
+    
   }
 
   const passwordRegExp = RegExp("^[a-z0-9]{6,28}$", "i");

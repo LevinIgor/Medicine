@@ -39,7 +39,7 @@ export const uploadAvatarAndUpdate = async file => {
     .from("Users")
     .getPublicUrl(data.path);
 
-  const { data: updateResponse, error: updateError } = await supabase
+  await supabase
     .from("users")
     .update({ avatar_url: uploadedFile.publicUrl })
     .eq("id", userId);
@@ -47,12 +47,13 @@ export const uploadAvatarAndUpdate = async file => {
 
 export const updateUserName = async name => {
   await getUserId();
-  if (!userId || typeof name !== "string" || name.length == 0) return;
 
   const { data, error } = await supabase
     .from("users")
     .update({ name })
     .eq("id", userId);
+
+  return error == null;
 };
 
 export const updateUserPhone = async phone => {
@@ -62,12 +63,12 @@ export const updateUserPhone = async phone => {
     .from("users")
     .update({ phone })
     .eq("id", userId);
+
+  return error == null;
 };
 
 export const updateUserEmail = async email => {
   await getUserId();
-
-  // await supabase.from("users").update({ email }).eq("id", userId);
 
   const authResponse = await supabase.auth.updateUser({
     email: email,

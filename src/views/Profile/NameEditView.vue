@@ -1,24 +1,77 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
   import vInput from "@/components/vInput.vue";
-  import { ref } from "vue";
+  import { ref, reactive } from "vue";
   import { updateUserName } from "@/supabase/user.js";
+  import SuccessEdit from "@/components/dialogs/EditInfo.vue";
+  import useStore from "@/store";
+
+  const store = useStore();
+
   const breadcrumb = [
     {
       name: "Profile",
       path: "/account/Profile",
     },
     {
-      name: "Profile Photo",
+      name: "Name",
       path: "/account/Profile",
     },
   ];
 
   const name = ref("");
+  const dialogText = reactive({
+    title: "",
+    subtitle: "",
+    successful: true,
+  });
+
+  function turnOffBtn() {
+    document.getElementById("btn-action").disabled = true;
+  }
+
+  function turnOnBtn() {
+    document.getElementById("btn-action").disabled = false;
+  }
+
+  function showDialog() {
+    document.getElementById("dialog-success-edit").showModal();
+  }
+
+  function updateUserDataState(name) {
+    const user = store.getUser;
+    user.name = name;
+    store.setUserData(user);
+  }
+
+  async function onUpdate() {
+    turnOffBtn();
+
+    const isSuccessful = await updateUserName(name.value);
+
+    dialogText.title = isSuccessful
+      ? "Name Successfully Changed!"
+      : "Error during name update!";
+    dialogText.subtitle = isSuccessful
+      ? "Your data has been updated"
+      : "Try reloading the page, or try again after a while";
+    dialogText.successful = isSuccessful;
+
+    turnOnBtn();
+    showDialog();
+    if (isSuccessful) updateUserDataState(name.value);
+  }
 </script>
 <template>
+  <success-edit
+    :title="dialogText.title"
+    :subtitle="dialogText.subtitle"
+    :successful="dialogText.successful"
+  ></success-edit>
   <BaseLayout :breadcrumb="breadcrumb" title="Name" :need-appointment="false">
-    <div class="bg-white py-6 px-4 rounded-md flex flex-col gap-4 max-w-sm mx-auto">
+    <div
+      class="bg-white py-6 px-4 rounded-md flex flex-col gap-4 max-w-sm mx-auto"
+    >
       <p>
         Update your data to ensure the security and accuracy of the information
         in your profile
@@ -31,8 +84,16 @@
         v-model="name"
       />
 
-      <button class="w-full mt-5" @click="updateUserName(name)">Save Changes</button>
-      <button class="w-full btn-secondary" @click="$router.push('/account/Profile')">Cancel</button>
+      <button id="btn-action" class="w-full mt-5" @click="onUpdate">
+        Save Changes
+      </button>
+      <button
+        id="btn-action"
+        class="w-full btn-secondary"
+        @click="$router.push('/account/Profile')"
+      >
+        Cancel
+      </button>
     </div>
   </BaseLayout>
 </template>
