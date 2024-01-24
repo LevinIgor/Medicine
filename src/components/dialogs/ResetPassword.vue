@@ -4,9 +4,10 @@
   import vInput from "@/components/vInput.vue";
   import useStore from "@/store.js";
   import { resetPassword } from "@/supabase/auth.js";
-  import { ref } from "vue";
+  import { ref, watch } from "vue";
 
   const email = ref("");
+  const isEmailValid = ref(true);
   const store = useStore();
 
   function closeModal() {
@@ -24,6 +25,15 @@
     closeModal();
     document.getElementById("check-email-dialog").showModal();
   }
+
+  const emailRegExp = RegExp(
+    "^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$",
+    ""
+  );
+
+  watch(email, val => {
+    isEmailValid.value = emailRegExp.test(val);
+  });
 </script>
 <template>
   <dialog id="reset-password-dialog">
@@ -51,6 +61,7 @@
         :minlength="5"
         :maxlength="50"
         v-model="email"
+        :incorrect="!isEmailValid"
       />
 
       <button class="w-full mt-10" @click="stage = 2">Continue</button>

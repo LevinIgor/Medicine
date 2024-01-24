@@ -3,12 +3,14 @@
   import vInput from "@/components/vInput.vue";
   import { ref, watch } from "vue";
   import vSelect from "@/components/vSelect.vue";
+  import { fetchSpecialty } from "@/supabase/doctor.js";
 
   const name = ref("");
   const email = ref("");
   const phone = ref("");
   const date = ref("");
   const services = ref("");
+  const specialty = ref([]);
 
   const emailRegExp = RegExp(
     "^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$",
@@ -41,6 +43,8 @@
       document.getElementById("dialog-appointment-confirmed").showModal();
     }
   }
+
+  fetchSpecialty().then(data => (specialty.value = data));
 </script>
 <template>
   <div class="grid grid-cols-5 md:block">
@@ -98,7 +102,7 @@
               Services
             </label>
             <v-select
-              :options="['sdsd', 'sdsds', 'sdsdds']"
+              :options="specialty.map(el => el.name)"
               id="services"
               @on-change="services = $event"
             ></v-select>

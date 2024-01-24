@@ -93,7 +93,7 @@
         @click="goToForgotPassword"
         >Forgot password?</span
       >
-      <span class="text-red font-semibold hidden" id="sign-in-error"
+      <span class="text-red font-medium hidden text-sm" id="sign-in-error"
         >Incorrect password or Email</span
       >
       <button id="sign-in-btn" class="mt-10 w-full">Sign In</button>

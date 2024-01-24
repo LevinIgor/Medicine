@@ -2,11 +2,15 @@
   import CloseIcon from "@/components/icons/close.vue";
   import vInput from "@/components/vInput.vue";
   import { signUp } from "@/supabase/auth.js";
-  import { ref } from "vue";
+  import { ref, watch } from "vue";
 
   const email = ref("");
   const password = ref("");
   const name = ref("");
+
+  const isEmailValid = ref(true);
+  const isPasswordValid = ref(true);
+  const isNameValid = ref(true);
 
   function closeDialog() {
     document.getElementById("sign-up-dialog").close();
@@ -26,6 +30,19 @@
     closeDialog();
     openSuccessDialog();
   }
+
+  const emailRegExp = RegExp(
+    "^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$",
+    ""
+  );
+
+  const passwordRegExp = RegExp("^[a-z0-9]{8,28}$", "i");
+
+  watch([email, password, name], () => {
+    isEmailValid.value = emailRegExp.test(email.value);
+    isPasswordValid.value = passwordRegExp.test(password.value);
+    isNameValid.value = /^[a-z\ ]{2,50}$/i.test(name.value);
+  });
 </script>
 <template>
   <dialog id="sign-up-dialog">
@@ -47,6 +64,7 @@
         :minlength="2"
         :maxlength="30"
         v-model="name"
+        :incorrect="!isNameValid"
       />
 
       <vInput
@@ -59,6 +77,7 @@
         :minlength="5"
         :maxlength="50"
         v-model="email"
+        :incorrect="!isEmailValid"
       />
 
       <vInput
@@ -71,6 +90,7 @@
         :minlength="8"
         :maxlength="50"
         v-model="password"
+        :incorrect="!isPasswordValid"
       />
 
       <button class="w-full mt-10" id="sign-up-btn">Sign Up</button>

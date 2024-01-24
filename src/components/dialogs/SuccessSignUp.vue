@@ -10,10 +10,10 @@
 <template>
   <dialog :id="dialogId">
     <close-icon
-      class="absolute right-5 top-5"
+      class="absolute right-5 top-5 cursor-pointer"
       @click="closeDialog"
     ></close-icon>
-    <h3 class="mt-32 text-center">Check your email</h3>
+    <h3 class="md:mt-32 text-center">Check your email</h3>
     <p class="my-3 md:my-0 text-center">
       An email has been sent to your email with a link, following which you will
       confirm your registration
