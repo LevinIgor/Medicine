@@ -5,6 +5,7 @@
   import ResetPassword from "@/components/dialogs/ResetPassword.vue";
   import CheckEmail from "@/components/dialogs/CheckEmail.vue";
   import MobileMenu from "@/components/dialogs/MobileMenu.vue";
+  import AppointmentConfirmed from "@/components/dialogs/AppointmentConfirmed.vue";
 </script>
 
 <template>
@@ -15,6 +16,7 @@
     <reset-password></reset-password>
     <check-email></check-email>
     <mobile-menu></mobile-menu>
+    <appointment-confirmed></appointment-confirmed>
   </div>
 </template>
 

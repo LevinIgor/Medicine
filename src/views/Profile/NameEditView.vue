@@ -1,7 +1,7 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
   import vInput from "@/components/vInput.vue";
-  import { ref, reactive } from "vue";
+  import { ref, reactive, watch } from "vue";
   import { updateUserName } from "@/supabase/user.js";
   import SuccessEdit from "@/components/dialogs/EditInfo.vue";
   import useStore from "@/store";
@@ -20,6 +20,7 @@
   ];
 
   const name = ref("");
+  const isValid = ref(true);
   const dialogText = reactive({
     title: "",
     subtitle: "",
@@ -61,6 +62,10 @@
     showDialog();
     if (isSuccessful) updateUserDataState(name.value);
   }
+
+  watch(name, _name => {
+    isValid.value = /^[a-z\ ]{2,32}$/i.test(_name);
+  });
 </script>
 <template>
   <success-edit
@@ -82,6 +87,8 @@
         placeholder="Enter name"
         type="text"
         v-model="name"
+        :incorrect="!isValid"
+        :maxlength="32"
       />
 
       <button id="btn-action" class="w-full mt-5" @click="onUpdate">

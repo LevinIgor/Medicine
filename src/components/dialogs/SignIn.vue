@@ -3,10 +3,12 @@
   import vInput from "@/components/vInput.vue";
 
   import { signInWithPassword } from "@/supabase/auth.js";
-  import { ref } from "vue";
+  import { ref, watch } from "vue";
 
   const email = ref("");
   const password = ref("");
+  const isEmailValid = ref(true);
+  const isPasswordValid = ref(true);
 
   const closeModal = () => document.getElementById("sign-in-dialog").close();
   const goToSignUp = () => {
@@ -35,6 +37,19 @@
 
     closeModal();
   };
+
+  const emailRegExp = RegExp(
+    "^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$",
+    "i"
+  );
+
+  watch(email, value => {
+    isEmailValid.value = emailRegExp.test(value);
+  });
+
+  watch(password, value => {
+    isPasswordValid.value = /^[a-z0-9_]{8,32}$/i.test(value);
+  });
 </script>
 <template>
   <dialog id="sign-in-dialog">
@@ -43,7 +58,7 @@
       @click="closeModal"
     />
     <h3 class="text-center text-gray-200 md:mt-10">Sign In</h3>
-    <p class="text-center mt-3 text-gray-180 font-normal ">
+    <p class="text-center mt-3 text-gray-180 font-normal">
       Sign Up and become a part of our community
     </p>
     <form @submit.prevent="signIn" class="mt-6 flex flex-col">
@@ -57,6 +72,7 @@
         :minlength="5"
         :maxlength="50"
         v-model="email"
+        :incorrect="!isEmailValid"
       />
 
       <vInput
@@ -66,9 +82,10 @@
         class="mt-5"
         autocomplete="current-password"
         required
-        :minlength="6"
-        :maxlength="50"
+        :minlength="8"
+        :maxlength="32"
         v-model="password"
+        :incorrect="!isPasswordValid"
       />
 
       <span
@@ -83,9 +100,7 @@
     </form>
     <p class="text-center mt-8 text-gray-160 font-normal">
       Don't have an account?
-      <span
-        class="cursor-pointer text-blue-180 font-medium"
-        @click="goToSignUp"
+      <span class="cursor-pointer text-blue-180 font-medium" @click="goToSignUp"
         >Sign Up</span
       >
     </p>

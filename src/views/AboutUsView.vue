@@ -5,11 +5,16 @@
   import DoctorCard from "@/components/DoctorCard.vue";
   import GoogleMap from "@/components/GoogleMap.vue";
   import vAppointment from "@/components/Appointment.vue";
+  import { fetchDoctorsForDoctorsPage } from "@/supabase/doctor.js";
+  import { ref } from "vue";
 
+  const doctors = ref([]);
   const breadcrumb = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about-us/our-history" },
   ];
+
+  fetchDoctorsForDoctorsPage(3).then(response => (doctors.value = response));
 </script>
 <template>
   <div class="container">
@@ -165,38 +170,7 @@
 
         <h3 class="mt-16 text-center">Our team</h3>
         <div class="grid grid-cols-3 md:grid-cols-1 gap-5 mt-5">
-          <doctor-card
-            :doctor="{
-              name: 'John Doe',
-              specialty: 'Therapist',
-              image:
-                'https://eutcxspxmeegqptbvfjt.supabase.co/storage/v1/object/public/Services/service1.jpg',
-            }"
-          ></doctor-card>
-          <doctor-card
-            :doctor="{
-              name: 'John Doe',
-              specialty: 'Therapist',
-              image:
-                'https://eutcxspxmeegqptbvfjt.supabase.co/storage/v1/object/public/Services/service1.jpg',
-            }"
-          ></doctor-card>
-          <doctor-card
-            :doctor="{
-              name: 'John Doe',
-              specialty: 'Therapist',
-              image:
-                'https://eutcxspxmeegqptbvfjt.supabase.co/storage/v1/object/public/Services/service1.jpg',
-            }"
-          ></doctor-card>
-          <doctor-card
-            :doctor="{
-              name: 'John Doe',
-              specialty: 'Therapist',
-              image:
-                'https://eutcxspxmeegqptbvfjt.supabase.co/storage/v1/object/public/Services/service1.jpg',
-            }"
-          ></doctor-card>
+          <doctor-card v-for="(doctor, index) in doctors" :key="index" :doctor="doctor"></doctor-card>
         </div>
         <a
           href="/doctors"

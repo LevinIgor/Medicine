@@ -1,6 +1,6 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
-  import { ref, reactive } from "vue";
+  import { ref, reactive, watch } from "vue";
   import { updateUserAddress } from "@/supabase/user";
   import vInput from "@/components/vInput.vue";
   import SuccessEdit from "@/components/dialogs/EditInfo.vue";
@@ -19,6 +19,7 @@
   ];
 
   const address = ref("");
+  const isValid = ref(true);
   const dialogText = reactive({
     title: "",
     subtitle: "",
@@ -61,6 +62,10 @@
     showDialog();
     if (isSuccessful) updateUserDataState(address.value);
   }
+
+  watch(address, value => {
+    isValid.value = value.length > 3;
+  });
 </script>
 <template>
   <success-edit
@@ -81,6 +86,8 @@
         v-model="address"
         label="Address"
         placeholder="Address City Address"
+        :incorrect="!isValid"
+        :maxlength="100"
       />
       <button id="btn-action" class="w-full mt-5" @click="onUpdate">
         Save Changes

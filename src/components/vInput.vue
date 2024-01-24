@@ -43,13 +43,13 @@
         :id="inputId"
         :type="type"
         :placeholder="placeholder"
-        :maxlength="maxlength || 32"
-        :minlength="minlength || 3"
+        :maxlength="maxlength || 50"
+        :minlength="minlength || 2"
         :required="required"
         :value="modelValue"
         :autocomplete="autocomplete"
         :pattern="pattern"
-        @input="$emit('update:modelValue', $event.target.value)"
+        @input="$emit('update:modelValue', $event.target.value.trim())"
       />
 
       <component

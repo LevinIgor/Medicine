@@ -22,7 +22,7 @@
 <template>
   <div class="relative w-full">
     <div
-      class="bg-gray p-3 text-sm text-gray-160 font-robot rounded-md w-full"
+      class="bg-gray p-4 text-sm text-gray-160 font-robot rounded-md w-full"
       @click="visible = !visible"
       tabindex="1"
       @blur="onblur"
