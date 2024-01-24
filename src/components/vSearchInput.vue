@@ -6,6 +6,11 @@
       type: Boolean,
       default: false,
     },
+    modelValue: {
+      type: String,
+      default: "",
+      required: true,
+    },
   });
 </script>
 <template>
@@ -15,7 +20,8 @@
       :class="isBgGray ? 'bg-gray' : 'bg-white'"
       type="text"
       placeholder="Search"
-      maxlength="20"
+      maxlength="100"
+      @input="$emit('update:modelValue', $event.target.value)"
     />
     <search-icon class="icon absolute left-0 top-1/2" />
   </div>

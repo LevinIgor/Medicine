@@ -104,9 +104,6 @@ const router = createRouter({
       component: () => import("@/views/TestView.vue"),
     },
   ],
-  scrollBehavior() {
-    return { top: 0 };
-  },
 });
 
 export default router;

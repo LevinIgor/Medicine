@@ -5,10 +5,14 @@
   import vTabs from "@/components/Tabs/Tabs.vue";
   import vTab from "@/components/Tabs/Tab.vue";
   import CommentsForm from "@/components/CommentsForm.vue";
-  import Appointment from "@/components/Appointment.vue";
+  import AppointmentForm from "@/components/Appointment.vue";
   import { useRoute } from "vue-router";
+  import { fetchService } from "@/supabase/service";
+  import { ref } from "vue";
 
   const route = useRoute();
+  const search = ref("");
+
   const breadcrumb = [
     {
       name: "Home",
@@ -19,10 +23,25 @@
       path: "/services",
     },
     {
-      name: "Service",
+      name: route.params.service || "",
       path: route.params.service,
     },
   ];
+
+  const service = ref({});
+
+  const fetchData = async () => {
+    const response = await fetchService(route.params.service);
+    console.log(response);
+    service.value = response;
+  };
+
+  [
+    "Dermatology is a medical specialty focused on the study and treatment of conditions affecting the skin, hair, and nails. Dermatologists diagnose and manage a broad spectrum of skin disorders, ranging from common issues like acne to more serious conditions such as skin cancer. The discipline encompasses both medical and cosmetic aspects, with dermatologists employing various diagnostic tools and treatment modalities to address diverse dermatological concerns.",
+    " Additionally, dermatologists play a vital role in public health through education on skin care practices and disease prevention. The field continually evolves with ongoing research, driving advancements in the understanding and treatment of skin-related conditions.",
+  ];
+
+  fetchData();
 </script>
 <template>
   <div>
@@ -31,25 +50,19 @@
       <bread-crumb class="mt-7" :breadcrumb="breadcrumb" />
       <div class="grid md:block grid-cols-2 mt-10 gap-5">
         <img
-          class="w-full object-cover rounded-lg"
-          src="../assets/photo/service1.jpg"
-          alt=""
+          class="w-full h-full object-cover rounded-lg"
+          :src="service.image"
+          alt="Service image"
+          loading="lazy"
         />
         <div class="bg-white py-10 md:py-6 px-7 md:px-4 rounded-lg md:mt-10">
-          <h2 class="text-left">Diagnostics</h2>
-          <p class="mt-3">
-            Medical diagnosis is a key step in identifying diseases and
-            developing a treatment plan. Timely detection of pathologies allows
-            doctors to start treatment at an early stage, which significantly
-            increases the chances of successful recovery and improves the
-            prognosis of the disease.
-          </p>
-          <p class="mt-3">
-            Professional doctors and medical staff of our center perform
-            diagnostics with great attention to detail, providing accurate and
-            reliable results. Our goal is to provide the best possible
-            assessment of your health and provide recommendations to maintain
-            and restore your well-being.
+          <h2 class="text-left">{{ service.name }}</h2>
+          <p
+            class="mt-3"
+            v-for="(desc, index) in service.description"
+            :key="index"
+          >
+            {{ desc }}
           </p>
           <button class="mt-5 w-full">Book Now</button>
         </div>
@@ -60,8 +73,8 @@
     <section class="bg-white py-24 md:py-10">
       <div class="container flex flex-col items-center">
         <h2>Prices for Diagnostics</h2>
-        <vSearchInput class="mt-5 max-w-md" is-bg-gray />
-        <v-accordion class="mt-10"></v-accordion>
+        <vSearchInput class="mt-5 max-w-md" is-bg-gray v-model="search" />
+        <v-accordion class="mt-10" :data="service.prices || []"></v-accordion>
       </div>
     </section>
 
@@ -115,13 +128,13 @@
     <!-- Section 4 -->
     <section class="bg-white py-24 md:py-20">
       <div class="container">
-        <CommentsForm />
+        <comments-form :object="$route.params.service"> </comments-form>
       </div>
     </section>
 
     <!-- Section 5 -->
     <section class="container py-24">
-      <Appointment />
+      <appointment-form></appointment-form>
     </section>
   </div>
 </template>

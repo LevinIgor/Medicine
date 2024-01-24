@@ -13,7 +13,7 @@ export const fetchDoctorsForHomePage = async (limit = 4) => {
   return data;
 };
 
-export const fetchDoctorForDoctorsPage = async limit => {
+export const fetchDoctorsForDoctorsPage = async limit => {
   const { data, error } = await supabase
     .from("doctors")
     .select("name, specialty, image, rating, id")
@@ -24,4 +24,40 @@ export const fetchDoctorForDoctorsPage = async limit => {
   }
 
   return data;
+};
+
+export const fetchDoctor = async id => {
+  const { data } = await supabase
+    .from("doctors")
+    .select(
+      "name,image, specialty, rating, description, id, email, phone, price"
+    )
+    .eq("id", id)
+    .single();
+
+  return data || {};
+};
+
+export const fetchDoctorsByName = async name => {
+  const { data } = await supabase
+    .from("doctors")
+    .select("name, specialty, image, rating, id")
+    .ilike("name", `%${name}%`);
+
+  return data || [];
+};
+
+export const fetchDoctorsBySpecialty = async specialty => {
+  const { data } = await supabase
+    .from("doctors")
+    .select("name, specialty, image, rating, id")
+    .eq("specialty", specialty);
+
+  return data || [];
+};
+
+export const fetchSpecialty = async () => {
+  const { data } = await supabase.from("specialty").select("name");
+
+  return data || [];
 };

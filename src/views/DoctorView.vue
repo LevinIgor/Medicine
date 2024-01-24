@@ -1,67 +1,84 @@
 <script setup>
   import BreadCrumb from "@/components/Breadcrumb.vue";
   import StarFilledIcon from "@/components/icons/filled/star.vue";
+  import StarEmptyIcon from "@/components/icons/star.vue";
   import PhoneIcon from "@/components/icons/phone.vue";
   import MailIcon from "@/components/icons/email-close.vue";
   import CommentsForm from "@/components/CommentsForm.vue";
-  import Appointment from "@/components/Appointment.vue";
+  import AppointmentForm from "@/components/Appointment.vue";
   import vTabs from "@/components/Tabs/Tabs.vue";
   import vTab from "@/components/Tabs/Tab.vue";
+  import { ref } from "vue";
+  import { fetchDoctor } from "@/supabase/doctor.js";
+  import { fetchComments } from "@/supabase/comments.js";
 
+  import { useRoute } from "vue-router";
+
+  const route = useRoute();
   const breadcrumb = [
     {
       name: "Home",
       path: "/",
     },
     {
-      name: "Doctor",
-      path: "/doctor",
+      name: "Doctors",
+      path: "/doctors",
     },
     {
       name: "Dr. John Doe",
       path: "/doctor/1",
     },
   ];
+
+  const doctor = ref({});
+
+  fetchDoctor(route.params.id).then(data => {
+    doctor.value = data;
+  });
 </script>
 <template>
   <div class="container">
     <bread-crumb class="my-8" :breadcrumb="breadcrumb" />
     <div class="grid md:block grid-cols-2 gap-5">
       <img
-        class="w-full object-cover object-top rounded-xl"
-        src="../assets/photo/doctor2.jpg"
-        alt=""
+        class="w-full h-full object-cover object-top rounded-xl"
+        :src="doctor.image"
+        alt="doctor image"
+        loading="lazy"
       />
       <div class="bg-white rounded-lg py-10 md:py-6 px-6 md:px-4 md:mt-10">
-        <h2 class="text-left">Dr. Sophia Campbell</h2>
+        <h2 class="text-left">{{ doctor.name }}</h2>
         <div class="flex items-center justify-between">
-          <span class="md:text-sm">Pediatrician</span>
+          <span class="md:text-sm">{{ doctor.specialty }}</span>
           <div class="flex items-center gap-2">
-            <star-filled-icon></star-filled-icon>
-            <star-filled-icon></star-filled-icon>
-            <star-filled-icon></star-filled-icon>
-            <star-filled-icon></star-filled-icon>
-            <star-filled-icon></star-filled-icon>
+            <star-filled-icon
+              v-for="(star, index) in doctor.rating || 0"
+              :key="index"
+            ></star-filled-icon>
+            <star-empty-icon
+              v-for="(star, index) in 5 - (doctor.rating || 0)"
+              :key="index"
+            ></star-empty-icon>
           </div>
         </div>
         <p class="mt-3">
-          A recognized expert in the field of pediatrics, with strong experience
-          and a passionate approach to the treatment and care of children of all
-          ages.
+          {{ doctor.description }}
         </p>
         <div class="flex items-center mt-5">
           <phone-icon class="w-12" />
-          <span class="text-gray-160 font-medium">+38 (068) 668 88 99</span>
+          <span class="text-gray-160 font-medium">{{ doctor.phone }}</span>
         </div>
         <div class="flex items-center mt-3">
           <mail-icon class="w-12" />
-          <span class="text-gray-160 font-medium">medclinic@gmail.com</span>
+          <span class="text-gray-160 font-medium">{{ doctor.email }}</span>
         </div>
 
         <div class="bg-gray py-4 px-5 flex justify-between mt-8 rounded-lg">
           <div class="flex flex-col">
             <span class="gray-200">Consultation</span>
-            <span class="text-4xl md:text-2xl font-medium">$60</span>
+            <span class="text-4xl md:text-2xl font-medium"
+              >${{ doctor.price }}</span
+            >
           </div>
 
           <button>Book Now</button>
@@ -116,10 +133,10 @@
   </div>
   <div class="bg-white">
     <div class="container py-24">
-      <comments-form class="" />
+      <comments-form class="" :object="$route.params.id"></comments-form>
     </div>
   </div>
-  <appointment class="py-24 container" />
+  <appointment-form class="py-24 container"></appointment-form>
 </template>
 
 <style lang="scss" scoped>

@@ -69,7 +69,7 @@
     :subtitle="dialogText.subtitle"
     :successful="dialogText.successful"
   ></success-edit>
-  <BaseLayout :breadcrumb="breadcrumb" title="Sex" :need-appointment="false">
+  <base-layout :breadcrumb="breadcrumb" title="Sex" :need-appointment="false">
     <div
       class="bg-white py-6 px-4 rounded-md max-w-sm mx-auto flex flex-col gap-4"
     >
@@ -89,7 +89,7 @@
         Cancel
       </button>
     </div>
-  </BaseLayout>
+  </base-layout>
 </template>
 
 <style lang="scss" scoped>

@@ -5,6 +5,7 @@ import { createPinia } from "pinia";
 import VueGoogleMaps from "@fawmi/vue-google-maps";
 import supabase from "@/supabase.js";
 import useStore from "@/store.js";
+import { getUserData } from "@/supabase/user.js";
 
 import App from "./App.vue";
 import router from "./router";
@@ -20,15 +21,17 @@ app.use(VueGoogleMaps, {
   },
 });
 
-const { onSignIn, onSignOut } = useStore();
+const { onSignIn, onSignOut, setUserData } = useStore();
 
 supabase.auth.onAuthStateChange(event => {
   if (event === "SIGNED_IN") {
     onSignIn();
+    getUserData();
   }
 
   if (event === "SIGNED_OUT") {
     onSignOut();
+    setUserData({});
   }
 });
 

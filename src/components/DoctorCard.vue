@@ -10,7 +10,9 @@
   });
 </script>
 <template>
-  <div class="doctor-card w-full relative rounded-lg overflow-hidden">
+  <div
+    class="doctor-card w-full relative rounded-lg overflow-hidden cursor-pointer"
+  >
     <img class="w-full h-full object-cover" :src="doctor.image" alt="" />
     <div class="absolute bottom-0 blur-lg bg-white/90 w-full rounded-t-2xl">
       <h5 class="text-center pt-2">
@@ -18,13 +20,17 @@
       </h5>
       <p class="text-center">{{ doctor.specialty }}</p>
       <div class="flex items-center justify-center pb-3 pt-1">
-        <star-icon class="" />
-        <star-icon class="" />
-        <star-icon class="" />
-        <star-icon class="" />
-        <star-icon class="" />
+        <star-icon class=""></star-icon>
+        <star-icon class=""></star-icon>
+        <star-icon class=""></star-icon>
+        <star-icon class=""></star-icon>
+        <star-icon class=""></star-icon>
       </div>
     </div>
   </div>
 </template>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+  img {
+    aspect-ratio: 3/4;
+  }
+</style>

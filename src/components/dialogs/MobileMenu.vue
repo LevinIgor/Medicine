@@ -82,7 +82,7 @@
       </div>
       <div class="flex flex-col gap-2 m-0 p-0 mt-10">
         <router-link
-          to="/about-us/our-history"
+          to="/about-us/Our%20History"
           class="font-roboto p-3 bg-white text-gray-160 rounded-md cursor-pointer"
           >About Us</router-link
         >

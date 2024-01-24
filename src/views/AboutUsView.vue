@@ -164,7 +164,31 @@
         </p>
 
         <h3 class="mt-16 text-center">Our team</h3>
-        <div class="grid grid-cols-3 gap-5 mt-5">
+        <div class="grid grid-cols-3 md:grid-cols-1 gap-5 mt-5">
+          <doctor-card
+            :doctor="{
+              name: 'John Doe',
+              specialty: 'Therapist',
+              image:
+                'https://eutcxspxmeegqptbvfjt.supabase.co/storage/v1/object/public/Services/service1.jpg',
+            }"
+          ></doctor-card>
+          <doctor-card
+            :doctor="{
+              name: 'John Doe',
+              specialty: 'Therapist',
+              image:
+                'https://eutcxspxmeegqptbvfjt.supabase.co/storage/v1/object/public/Services/service1.jpg',
+            }"
+          ></doctor-card>
+          <doctor-card
+            :doctor="{
+              name: 'John Doe',
+              specialty: 'Therapist',
+              image:
+                'https://eutcxspxmeegqptbvfjt.supabase.co/storage/v1/object/public/Services/service1.jpg',
+            }"
+          ></doctor-card>
           <doctor-card
             :doctor="{
               name: 'John Doe',
