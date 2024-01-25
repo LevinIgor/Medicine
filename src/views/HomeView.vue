@@ -52,7 +52,7 @@
       <div class="flex flex-col items-center container">
         <h1 class="max-w-3xl">
           Consult Your
-          <span class="text-blue-200 text-4xl">Health</span>
+          <span class="text-blue-200 text-6xl md:text-4xl">Health</span>
           Issue Easily And Quickly
         </h1>
         <p class="text-center max-w-3xl mt-3">

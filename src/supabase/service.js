@@ -1,7 +1,10 @@
 import supabase from "@/supabase.js";
 
-export const fetchServices = async () => {
-  const { data } = await supabase.from("services").select("name,image");
+export const fetchServices = async (limit = 30) => {
+  const { data } = await supabase
+    .from("services")
+    .select("name,image")
+    .limit(limit);
 
   return data || [];
 };

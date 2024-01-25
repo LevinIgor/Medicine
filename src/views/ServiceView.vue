@@ -31,9 +31,7 @@
   const service = ref({});
 
   const fetchData = async () => {
-    const response = await fetchService(route.params.service);
-    console.log(response);
-    service.value = response;
+    service.value = await fetchService(route.params.service);
   };
 
   [
