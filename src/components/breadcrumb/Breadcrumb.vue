@@ -18,7 +18,7 @@
   <div class="flex items-center gap-2">
     <div class="" v-for="(item, i) in breadcrumb">
       <router-link
-        class="text-gray-200"
+        class="text-gray-200 break-all"
         :class="{ active: isLastItem(i) }"
         :to="item.path"
       >
