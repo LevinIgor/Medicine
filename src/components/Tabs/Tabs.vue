@@ -8,7 +8,7 @@
     provide,
     onUnmounted,
   } from "vue";
-  
+
   import useStore from "@/store";
 
   const store = useStore();
@@ -32,6 +32,7 @@
   );
 
   provide("activeTab", activeTab);
+
   const icons = shallowRef(slots.default().map(el => asyncIcon(el.props.icon)));
 
   function asyncIcon(name) {
