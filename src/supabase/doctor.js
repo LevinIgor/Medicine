@@ -56,6 +56,16 @@ export const fetchDoctorsBySpecialty = async specialty => {
   return data || [];
 };
 
+export const fetchDoctorBySpecialty = async specialty => {
+  const { data } = await supabase
+    .from("doctors")
+    .select("name, specialty, image, rating, id")
+    .eq("specialty", specialty)
+    .single();
+
+  return data || [];
+};
+
 export const fetchSpecialty = async () => {
   const { data } = await supabase.from("specialty").select("name");
 
