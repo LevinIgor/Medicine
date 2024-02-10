@@ -1,6 +1,6 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
-  import GoogleMap from "@/components/GoogleMap.vue";
+  import GoogleMap from "@/components/google-map/GoogleMap.vue";
 
   const breadcrumb = [
     {

@@ -1,11 +1,12 @@
 <script setup>
-  import BreadCrumb from "@/components/Breadcrumb.vue";
-  import vSearchInput from "@/components/vSearchInput.vue";
-  import vAccordion from "@/components/Accordion.vue";
-  import vTabs from "@/components/Tabs/Tabs.vue";
-  import vTab from "@/components/Tabs/Tab.vue";
-  import CommentsForm from "@/components/CommentsForm.vue";
-  import AppointmentForm from "@/components/Appointment.vue";
+  import BreadCrumb from "@/components/breadcrumb/Breadcrumb.vue";
+  import vSearchInput from "@/components/input/vSearchInput.vue";
+  import vAccordion from "@/components/accordion/Accordion.vue";
+  import vTabs from "@/components/tabs/Tabs.vue";
+  import vTab from "@/components/tabs/Tab.vue";
+  import CommentsForm from "@/components/comments-form/CommentsForm.vue";
+  import AppointmentForm from "@/components/appointment/Appointment.vue";
+
   import { useRoute } from "vue-router";
   import { fetchService } from "@/supabase/service";
   import { ref } from "vue";
@@ -113,8 +114,9 @@
             </div>
             <img
               class="col-span-2 w-full object-cover rounded-lg md:mt-10"
-              src="../assets/photo/serviceTab1.jpg"
-              alt=""
+              src="https://eutcxspxmeegqptbvfjt.supabase.co/storage/v1/object/public/Site/image%206.jpg"
+              alt="service picture"
+              loading="lazy"
             />
           </div>
         </v-tab>

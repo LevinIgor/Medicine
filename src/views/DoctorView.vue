@@ -1,16 +1,15 @@
 <script setup>
-  import BreadCrumb from "@/components/Breadcrumb.vue";
-  import StarFilledIcon from "@/components/icons/filled/star.vue";
-  import StarEmptyIcon from "@/components/icons/star.vue";
-  import PhoneIcon from "@/components/icons/phone.vue";
-  import MailIcon from "@/components/icons/email-close.vue";
-  import CommentsForm from "@/components/CommentsForm.vue";
-  import AppointmentForm from "@/components/Appointment.vue";
-  import vTabs from "@/components/Tabs/Tabs.vue";
-  import vTab from "@/components/Tabs/Tab.vue";
+  import BreadCrumb from "@/components/breadcrumb/Breadcrumb.vue";
+  import StarFilledIcon from "@/components/icon/filled/star.vue";
+  import StarEmptyIcon from "@/components/icon/star.vue";
+  import PhoneIcon from "@/components/icon/phone.vue";
+  import MailIcon from "@/components/icon/email-close.vue";
+  import CommentsForm from "@/components/comments-form/CommentsForm.vue";
+  import AppointmentForm from "@/components/appointment/Appointment.vue";
+  import vTabs from "@/components/tabs/Tabs.vue";
+  import vTab from "@/components/tabs/Tab.vue";
   import { ref } from "vue";
   import { fetchDoctor } from "@/supabase/doctor.js";
-  import { fetchComments } from "@/supabase/comments.js";
 
   import { useRoute } from "vue-router";
 
@@ -41,7 +40,7 @@
     <bread-crumb class="my-8" :breadcrumb="breadcrumb" />
     <div class="grid md:block grid-cols-2 gap-5">
       <img
-        class="w-full h-full object-cover object-top rounded-xl"
+        class="w-full h-full aspect-4/3 object-cover object-top rounded-xl"
         :src="doctor.image"
         alt="doctor image"
         loading="lazy"
@@ -52,16 +51,16 @@
           <span class="md:text-sm">{{ doctor.specialty }}</span>
           <div class="flex items-center gap-2">
             <star-filled-icon
-              v-for="(star, index) in doctor.rating || 0"
+              v-for="(_, index) in doctor.rating || 0"
               :key="index"
             ></star-filled-icon>
             <star-empty-icon
-              v-for="(star, index) in 5 - (doctor.rating || 0)"
+              v-for="(_, index) in 5 - (doctor.rating || 0)"
               :key="index"
             ></star-empty-icon>
           </div>
         </div>
-        <p class="mt-3">
+        <p class="mt-3 w-full">
           {{ doctor.description }}
         </p>
         <div class="flex items-center mt-5">
@@ -73,7 +72,9 @@
           <span class="text-gray-160 font-medium">{{ doctor.email }}</span>
         </div>
 
-        <div class="bg-gray py-4 px-5 flex justify-between mt-8 rounded-lg">
+        <div
+          class="bg-gray py-4 px-5 flex items-center justify-between mt-8 rounded-lg"
+        >
           <div class="flex flex-col">
             <span class="gray-200">Consultation</span>
             <span class="text-4xl md:text-2xl font-medium"
@@ -86,7 +87,7 @@
       </div>
     </div>
 
-    <v-tabs class="mt-24" :is-vertical="false">
+    <v-tabs class="my-24" :is-vertical="false">
       <v-tab title="Experience">
         <div class="grid md:block grid-cols-12 gap-6">
           <div class="col-span-8">
@@ -122,8 +123,9 @@
           </div>
           <img
             class="col-span-4 w-full object-cover rounded-xl md:mt-5"
-            src="../assets/photo/experience1.jpg"
-            alt=""
+            src="https://eutcxspxmeegqptbvfjt.supabase.co/storage/v1/object/public/Site/image-6.jpg"
+            alt="doctor image"
+            loading="lazy"
           />
         </div>
       </v-tab>
@@ -136,15 +138,11 @@
       <comments-form class="" :object="$route.params.id"></comments-form>
     </div>
   </div>
-  <appointment-form class="py-24 container"></appointment-form>
+  <appointment-form class="container !my-24"></appointment-form>
 </template>
 
 <style lang="scss" scoped>
   svg {
     color: white;
-  }
-
-  img {
-    max-height: 460px;
   }
 </style>
