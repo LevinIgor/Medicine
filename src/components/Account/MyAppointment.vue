@@ -48,9 +48,7 @@
       @on-change="filterReservations"
     ></horizontal-filter>
     <div class="flex flex-col gap-10 mt-6">
-      <h3 class="text-center my-10" v-if="reservations.length == 0">
-        Not found reservations by filter
-      </h3>
+      <h4 class="text-center my-10" v-if="reservations.length == 0">Empty</h4>
       <appointment-card
         v-for="item in reservations"
         :key="item.id"

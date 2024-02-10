@@ -302,10 +302,4 @@
   </main>
 </template>
 
-<style lang="scss" scoped>
-  @media screen and (max-width: 768px) {
-    svg {
-      max-width: 10rem;
-    }
-  }
-</style>
+<style lang="scss" scoped></style>
