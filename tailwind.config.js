@@ -32,6 +32,12 @@ module.exports = {
     screens: {
       md: { max: "700px" },
     },
+    aspectRatio: {
+      square: "1/1",
+      video: "16/9",
+      "4/3": "4/3",
+      "4/5": "4/5",
+    },
   },
   variants: {
     extend: {},
