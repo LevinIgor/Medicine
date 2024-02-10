@@ -40,7 +40,7 @@
       <error-icon v-else></error-icon>
       <h3 class="text-center mt-5">{{ title }}</h3>
       <p class="font-normal mt-2 text-gray-180">{{ subtitle }}</p>
-      <button class="w-full mt-8" @click="$router.push('/account/Profile')">
+      <button class="w-full mt-8" @click="$router.push('/account')">
         {{ btnText }}
       </button>
     </div>
