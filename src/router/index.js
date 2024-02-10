@@ -9,7 +9,7 @@ const router = createRouter({
       component: () => import("@/views/HomeView.vue"),
     },
     {
-      path: "/about-us/:tab",
+      path: "/about-us/",
       name: "about-us",
       component: () => import("@/views/AboutUsView.vue"),
     },
@@ -49,7 +49,7 @@ const router = createRouter({
       component: () => import("@/views/UpdatePassword.vue"),
     },
     {
-      path: "/account/:tab",
+      path: "/account/",
       name: "account",
       component: () => import("@/views/AccountView.vue"),
     },
@@ -104,6 +104,9 @@ const router = createRouter({
       component: () => import("@/views/TestView.vue"),
     },
   ],
+  scrollBehavior() {
+    return { top: 0 };
+  },
 });
 
 export default router;
