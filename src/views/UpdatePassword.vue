@@ -1,6 +1,6 @@
 <script setup>
-  import vInput from "@/components/vInput.vue";
-  import DoneIcon from "@/components/icons/done.vue";
+  import vInput from "@/components/input/vInput.vue";
+  import DoneIcon from "@/components/icon/done.vue";
   import { ref } from "vue";
   import useStore from "@/store.js";
   import { updatePassword } from "@/supabase/auth.js";
