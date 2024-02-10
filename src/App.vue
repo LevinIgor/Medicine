@@ -1,18 +1,21 @@
 <script setup>
-  import vHeader from "@/components/Header.vue";
-  import vFooter from "@/components/Footer.vue";
-  import vDialogs from "@/components/dialogs/Dialogs.vue";
-
-  import { getUserData } from "@/supabase/user.js";
-
-  getUserData();
+  import vHeader from "@/components/header/Header.vue";
+  import vFooter from "@/components/footer/Footer.vue";
+  import vDialogs from "@/components/dialog/Dialogs.vue";
 </script>
 
 <template>
   <v-header></v-header>
-  <router-view></router-view>
+
+  <div class="min-height">
+    <router-view></router-view>
+  </div>
   <v-footer></v-footer>
   <v-dialogs></v-dialogs>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .min-height {
+    min-height: 100lvh;
+  }
+</style>

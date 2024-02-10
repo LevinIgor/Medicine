@@ -1,34 +1,42 @@
 import { defineStore } from "pinia";
+import { getUserData } from "@/supabase/user";
 
 const useStore = defineStore("store", {
   state: () => ({
     resetPasswordEmail: "",
-    isSigned: false,
-    user: {},
+    user: null,
+    session: null,
+    accountActiveTab: null,
   }),
   actions: {
     setResetPasswordEmail(email) {
       this.resetPasswordEmail = email;
     },
-    onSignIn() {
-      this.isSigned = true;
-    },
-    onSignOut() {
-      this.isSigned = false;
-    },
     setUserData(user) {
       this.user = user;
+    },
+    setSession(session) {
+      this.session = session;
+    },
+    async setUserDataAsync(id) {
+      this.setUserData(await getUserData(id));
+    },
+    setAccountActiveTab(tab) {
+      this.accountActiveTab = tab;
     },
   },
   getters: {
     getEmailReset() {
       return this.resetPasswordEmail;
     },
-    getIsSigned() {
-      return this.isSigned;
-    },
     getUser() {
       return this.user;
+    },
+    getSession() {
+      return this.session;
+    },
+    getAccountActiveTab() {
+      return this.accountActiveTab;
     },
   },
 });

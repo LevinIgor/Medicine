@@ -1,9 +1,19 @@
 <script setup>
-  import { ref, useSlots, provide, defineAsyncComponent, watch } from "vue";
-  import { useRoute } from "vue-router";
+  import {
+    ref,
+    useSlots,
+    defineAsyncComponent,
+    shallowRef,
+    computed,
+    provide,
+    onUnmounted,
+  } from "vue";
+  import useStore from "@/store";
 
-  const route = useRoute();
+  const store = useStore();
+  const width = window.innerWidth;
   const slots = useSlots();
+
   const props = defineProps({
     isVertical: {
       type: Boolean,
@@ -16,25 +26,20 @@
   });
 
   const titles = ref(slots.default().map(slot => slot.props.title));
-  const icons = ref(slots.default().map(slot => slot.props.icon));
-  const activeTab = ref(route.params?.tab || titles.value[0]);
+  const activeTab = computed(
+    () => store.getAccountActiveTab || titles.value[0]
+  );
 
-  function getIcon(title) {
-    const index = titles.value.indexOf(title);
-    return defineAsyncComponent({
-      loader: () => import(`@/components/icons/${icons.value[index]}.vue`),
-    });
+  provide("activeTab", activeTab);
+  const icons = shallowRef(slots.default().map(el => asyncIcon(el.props.icon)));
+
+  function asyncIcon(name) {
+    return defineAsyncComponent(() => import(`@/components/icon/${name}.vue`));
   }
 
-  watch(
-    () => route.params.tab,
-    el => {
-      activeTab.value = el;
-    }
-  );
-  provide("activeTab", activeTab);
-
-  const width = window.innerWidth;
+  onUnmounted(() => {
+    store.setAccountActiveTab(null);
+  });
 </script>
 <template>
   <div class="grid grid-cols-12 gap-5 md:block" v-if="isVertical">
@@ -43,10 +48,11 @@
         class="cursor-pointer flex items-center gap-2 py-3 px-4 rounded-md bg-white text-gray-160 font-roboto select-none whitespace-nowrap"
         :class="{ active: activeTab === title }"
         v-for="(title, index) in titles"
-        :key="index"
-        @click="(activeTab = title), $router.push({ params: { tab: title } })"
+        :key="title"
+        @click="store.setAccountActiveTab(title)"
       >
-        <component :is="getIcon(title)" class="w-5 h-5" />
+        <component :is="icons[index]" class="w-5 h-5" />
+
         {{ title }}
       </li>
     </ul>
@@ -64,7 +70,7 @@
         :class="{ active: activeTab === title }"
         v-for="(title, index) in titles"
         :key="index"
-        @click="(activeTab = title), $router.push({ params: { tab: title } })"
+        @click="store.setAccountActiveTab(title)"
       >
         {{ title }}
       </li>
@@ -80,14 +86,14 @@
   ul {
     padding: 0;
     li:hover {
-      background-color: var(--blue-180);
-      color: #fff;
+      background-color: var(--blue-160);
+
       transition:
         background-color 0.3s ease-in-out,
         color 0.3s ease-in-out;
     }
     .active {
-      background-color: var(--blue-180);
+      background-color: var(--blue-180) !important;
       color: #fff;
       font-weight: 600;
       font-style: normal;

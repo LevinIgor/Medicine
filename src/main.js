@@ -1,11 +1,10 @@
 import "./assets/tailwind.css";
 import "./assets/base.css";
-import { createApp } from "vue";
 import { createPinia } from "pinia";
+import { createApp } from "vue";
 import VueGoogleMaps from "@fawmi/vue-google-maps";
 import supabase from "@/supabase.js";
 import useStore from "@/store.js";
-import { getUserData } from "@/supabase/user.js";
 
 import App from "./App.vue";
 import router from "./router";
@@ -21,18 +20,18 @@ app.use(VueGoogleMaps, {
   },
 });
 
-const { onSignIn, onSignOut, setUserData } = useStore();
+const { setUserData, setUserDataAsync } = useStore();
 
-supabase.auth.onAuthStateChange(event => {
+supabase.auth.onAuthStateChange((event, session) => {
   if (event === "SIGNED_IN") {
-    onSignIn();
-    getUserData();
+    setUserDataAsync(session.user.id);
   }
 
   if (event === "SIGNED_OUT") {
-    onSignOut();
-    setUserData({});
+    setUserData(null);
   }
 });
 
 app.mount("#app");
+
+

@@ -1,6 +1,6 @@
 <script setup>
-  import Breadcrumb from "@/components/Breadcrumb.vue";
-  import Appointment from "@/components/Appointment.vue";
+  import Breadcrumb from "@/components/breadcrumb/Breadcrumb.vue";
+  import Appointment from "@/components/appointment/Appointment.vue";
 
   const props = defineProps({
     // [{name: 'Home', link: '/'}]

@@ -1,19 +1,22 @@
 <script setup>
-  import ArrowLeft from "@/components/icons/arrow-right.vue";
+  import ArrowLeft from "@/components/icon/arrow-right.vue";
+
   import useStore from "@/store";
   import { computed } from "vue";
 
   const store = useStore();
 
-  const user = computed(() => store.getUser);
+  const user = computed(() => store.getUser || {});
 </script>
 <template>
   <div>
     <h2>Profile</h2>
+
     <div
       class="flex items-center justify-between bg-white rounded-t-xl p-6 mt-7 cursor-pointer"
+      @click="$router.push({ name: 'profile-photo-edit' })"
     >
-      <div class="block" @click="$router.push({ name: 'profile-photo-edit' })">
+      <div class="block">
         <span class="font-semibold text-gray-180">Photo profile</span>
       </div>
       <img

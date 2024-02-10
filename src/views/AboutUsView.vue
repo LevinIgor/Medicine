@@ -1,17 +1,18 @@
 <script setup>
-  import vBreadcrumb from "@/components/Breadcrumb.vue";
-  import vTabs from "@/components/Tabs/Tabs.vue";
-  import vTab from "@/components/Tabs/Tab.vue";
-  import DoctorCard from "@/components/DoctorCard.vue";
-  import GoogleMap from "@/components/GoogleMap.vue";
-  import vAppointment from "@/components/Appointment.vue";
+  import vBreadcrumb from "@/components/breadcrumb/Breadcrumb.vue";
+  import vTabs from "@/components/tabs/Tabs.vue";
+  import vTab from "@/components/tabs/Tab.vue";
+  import DoctorCard from "@/components/card/DoctorCard.vue";
+  import GoogleMap from "@/components/google-map/GoogleMap.vue";
+  import vAppointment from "@/components/appointment/Appointment.vue";
+
   import { fetchDoctorsForDoctorsPage } from "@/supabase/doctor.js";
   import { ref } from "vue";
 
   const doctors = ref([]);
   const breadcrumb = [
     { name: "Home", path: "/" },
-    { name: "About Us", path: "/about-us/our-history" },
+    { name: "About Us", path: "/about-us/" },
   ];
 
   fetchDoctorsForDoctorsPage(3).then(response => (doctors.value = response));
@@ -54,8 +55,9 @@
         </p>
         <img
           class="w-full object-cover rounded-lg mt-5"
-          src="@/assets/photo/Post1.jpg"
+          src="https://eutcxspxmeegqptbvfjt.supabase.co/storage/v1/object/public/Site/image-5.jpg"
           alt=""
+          loading="lazy"
         />
 
         <h3 class="text-center mt-16">Advantages</h3>
@@ -170,7 +172,11 @@
 
         <h3 class="mt-16 text-center">Our team</h3>
         <div class="grid grid-cols-3 md:grid-cols-1 gap-5 mt-5">
-          <doctor-card v-for="(doctor, index) in doctors" :key="index" :doctor="doctor"></doctor-card>
+          <doctor-card
+            v-for="(doctor, index) in doctors"
+            :key="index"
+            :doctor="doctor"
+          ></doctor-card>
         </div>
         <a
           href="/doctors"

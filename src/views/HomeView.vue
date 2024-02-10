@@ -1,37 +1,44 @@
 <script setup>
-  import SyngentaIcon from "@/components/icons/company/syngenta.vue";
-  import MerckIcon from "@/components/icons/company/merck.vue";
-  import AllerganIcon from "@/components/icons/company/allergan.vue";
-  import ArdioIcon from "@/components/icons/company/ardio.vue";
-  import EsterlineIcon from "@/components/icons/company/esterline.vue";
-  import RegeneronIcon from "@/components/icons/company/regeneron.vue";
+  import SyngentaIcon from "@/components/icon/company/syngenta.vue";
+  import MerckIcon from "@/components/icon/company/merck.vue";
+  import AllerganIcon from "@/components/icon/company/allergan.vue";
+  import ArdioIcon from "@/components/icon/company/ardio.vue";
+  import EsterlineIcon from "@/components/icon/company/esterline.vue";
+  import RegeneronIcon from "@/components/icon/company/regeneron.vue";
+  import BgEntityIcon from "@/components/icon/bg-entity.vue";
+  import BgMedEntityIcon from "@/components/icon/bg-med-entity.vue";
+  import BgMedEntity2Icon from "@/components/icon/bg-med2-entity.vue";
 
-  import MedKitIcon from "@/components/icons/med-kit.vue";
-  import ClockIcon from "@/components/icons/clock.vue";
-  import DocumentIcon from "@/components/icons/document.vue";
-  import ArrowSquareIcon from "@/components/icons/arrow-square.vue";
+  import MedKitIcon from "@/components/icon/med-kit.vue";
+  import ClockIcon from "@/components/icon/clock.vue";
+  import DocumentIcon from "@/components/icon/document.vue";
+  import ArrowSquareIcon from "@/components/icon/arrow-square.vue";
 
   import "swiper/scss";
   import "swiper/scss/pagination";
   import "swiper/scss/navigation";
   import "swiper/scss/virtual";
 
-  import ServiceCard from "@/components/ServiceCard.vue";
-  import DoctorsSlider from "@/components/DoctorsSlider.vue";
-  import GoogleMap from "@/components/GoogleMap.vue";
-  import ReviewSlider from "@/components/ReviewSlider.vue";
-  import FAQ from "@/components/FAQ.vue";
-  import Appointment from "@/components/Appointment.vue";
+  import ServiceCard from "@/components/card/ServiceCard.vue";
+  import DoctorsSlider from "@/components/slider/DoctorsSlider.vue";
+  import GoogleMap from "@/components/google-map/GoogleMap.vue";
+  import ReviewSlider from "@/components/slider/ReviewSlider.vue";
+  import FAQ from "@/components/faq/FAQ.vue";
+  import AppointmentForm from "@/components/appointment/Appointment.vue";
 
   import { ref, computed } from "vue";
   import { fetchDoctorsForHomePage } from "@/supabase/doctor.js";
   import { fetchServices } from "@/supabase/service.js";
+  import { fetchFAQ } from "@/supabase/faq.js";
 
   const services = ref([]);
   fetchServices(6).then(_services => (services.value = _services));
 
   const doctors = ref([]);
   fetchDoctorsForHomePage(8).then(_doctors => (doctors.value = _doctors));
+
+  const faqs = ref([]);
+  fetchFAQ(4).then(data => (faqs.value = data));
 
   const slidesPerView = computed(() => {
     if (window.innerWidth < 768) return 1;
@@ -48,7 +55,7 @@
 <template>
   <main>
     <!-- Section 1 -->
-    <section class="bg-white py-32 md:py-24">
+    <section class="bg-white py-32 md:py-24 relative">
       <div class="flex flex-col items-center container">
         <h1 class="max-w-3xl">
           Consult Your
@@ -72,6 +79,7 @@
           <regeneron-icon class="w-full" />
         </div>
       </div>
+      <bg-entity-icon class="absolute w-full h-full top-0 left-0" />
     </section>
 
     <!-- Section 2 -->
@@ -83,7 +91,7 @@
       </p>
       <div class="gap-3 mt-10 flex md:flex-col">
         <div class="bg-white py-10 md:py-6 px-6 md:px-4 rounded-md">
-          <medKit-icon />
+          <medKit-icon></medKit-icon>
           <h5 class="mt-4 text-left">Select a medical specialty</h5>
           <p class="mt-2 md:mt-0">
             Select the required medical specialty or doctor you want to make an
@@ -91,7 +99,7 @@
           </p>
         </div>
         <div class="bg-white py-10 md:py-6 px-6 md:px-4 rounded-md">
-          <clock-icon />
+          <clock-icon></clock-icon>
           <h5 class="mt-3 text-left">Choose the time and date</h5>
           <p class="mt-2 md:mt-0">
             Choose a convenient time and date for your consultation, taking into
@@ -99,7 +107,7 @@
           </p>
         </div>
         <div class="bg-white py-10 md:py-6 px-6 md:px-4 rounded-md">
-          <document-icon />
+          <document-icon></document-icon>
           <h5 class="mt-3 text-left">Fill out the registration form</h5>
           <p class="mt-2 md:mt-0">
             Fill out a short form with your personal information and contact
@@ -113,9 +121,10 @@
     <section class="bg-white">
       <div class="container grid grid-cols-2 md:grid-cols-1 gap-5 py-24">
         <img
-          src="@/assets/photo/person1.jpg"
+          src="https://eutcxspxmeegqptbvfjt.supabase.co/storage/v1/object/public/Site/41b83c555267c38064de445952f5f799.jpg"
           alt="Person picture"
-          class="w-full overflow-hidden rounded-md"
+          class="w-full h-full overflow-hidden rounded-md"
+          loading="lazy"
         />
         <div class="flex flex-col justify-between h-full">
           <span class="label-blue my-3">About Us</span>
@@ -142,14 +151,15 @@
       <div class="grid grid-cols-12 md:block gap-5 mt-10">
         <div class="col-span-5 grid md:block grid-rows-6 gap-5">
           <div
-            class="row-span-4 md:row-span-1 bg-blue-160 rounded px-6 md:px-4 py-10 md:py-6 flex flex-col md:mt-5"
+            class="row-span-4 md:row-span-1 bg-blue-160 rounded px-6 md:px-4 py-10 md:py-6 flex flex-col md:mt-5 relative"
           >
             <h4>Reception at a convenient time and without a queue</h4>
             <p class="mt-3 md:mt-1">
               Schedule a visit to a doctor online and don't waste time waiting
               in lines
             </p>
-            <button class="mt-5">Find a doctor</button>
+            <button class="mt-auto">Find a doctor</button>
+            <bg-med-entity-icon class="absolute w-full h-full top-0 left-0" />
           </div>
           <div
             class="row-span-2 md:row-span-1 bg-violet-180 rounded px-6 md:px-4 py-10 md:py-6 md:mt-5"
@@ -167,7 +177,7 @@
               class="col-span-4 bg-violet-180 rounded px-6 md:px-4 py-10 md:py-6 md:mt-5"
             >
               <h5>Patient's personal account</h5>
-              <arrow-square-icon class="mt-5 md:mt-3" />
+              <arrow-square-icon class="mt-5 md:mt-3"></arrow-square-icon>
             </div>
             <div
               class="col-span-6 bg-violet-180 rounded px-6 md:px-4 py-10 md:py-6 md:mt-5"
@@ -180,7 +190,7 @@
             </div>
           </div>
           <div
-            class="row-span-4 md:row-auto bg-blue-160 rounded px-6 md:px-4 py-10 md:py-6 flex flex-col md:mt-5"
+            class="row-span-4 md:row-auto bg-blue-160 rounded px-6 md:px-4 py-10 md:py-6 flex flex-col md:mt-5 relative"
           >
             <h4>Wide range of services</h4>
             <p class="mt-3 md:mt-1">
@@ -188,6 +198,7 @@
               allows us to provide comprehensive treatment and care.
             </p>
             <button class="mt-auto md:mt-5">Find a services</button>
+            <bg-med-entity2-icon class="absolute w-full h-full top-0 left-0" />
           </div>
         </div>
       </div>
@@ -216,8 +227,10 @@
             "
           />
         </div>
-        <a class="link-blue text-center mt-5" href="/services"
-          >See all services</a
+        <span
+          class="link-blue text-center mt-5 cursor-pointer"
+          @click="$router.push('/services')"
+          >See all services</span
         >
       </div>
     </section>
@@ -249,7 +262,10 @@
           consultations and to make an appointment
         </p>
 
-        <google-map class="mt-10 self-stretch" :need-details="needDetails" />
+        <google-map
+          class="mt-10 self-stretch"
+          :need-details="needDetails"
+        ></google-map>
       </div>
     </section>
 
@@ -261,7 +277,7 @@
         expertise
       </p>
 
-      <review-slider class="mt-10" />
+      <review-slider class="mt-10"></review-slider>
     </section>
 
     <!-- Section 9 -->
@@ -273,14 +289,14 @@
           Get explanations and information on the most frequently asked
           questions about health care
         </p>
-        <FAQ class="mt-10" :limit="4" />
+        <FAQ class="mt-10" :faqs="faqs"></FAQ>
       </div>
     </section>
 
     <!-- Section 10 -->
     <section class="bg-gray">
       <div class="container py-32 md:py-24">
-        <appointment />
+        <appointment-form></appointment-form>
       </div>
     </section>
   </main>
