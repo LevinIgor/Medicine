@@ -9,21 +9,24 @@ button {
   width: fit-content;
   height: fit-content;
 
-  padding: 1rem 2rem;
+  padding: 14px 32px;
   box-sizing: border-box;
   cursor: pointer;
+  transition: filter 0.3s;
+}
+
+button:hover {
+  filter: brightness(1.05);
 }
 
 .btn-secondary {
   background-color: transparent;
   color: var(--blue-200);
-
   border: none;
 }
 
 button:disabled {
-  background-color: var(--gray-100);
-  color: var(--gray-400);
+  opacity: 0.5;
   cursor: not-allowed;
 }
 

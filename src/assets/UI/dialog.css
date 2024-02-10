@@ -14,14 +14,14 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-dialog::-webkit-scrollbar{
+dialog::-webkit-scrollbar {
   display: none;
 }
 
 @media (max-width: 700px) {
   dialog {
     min-width: 100%;
-    min-height: 100%;
+    min-height: 100lvh;
     border-radius: 0;
     padding: 1rem;
     margin: 0;
@@ -32,5 +32,34 @@ dialog::-webkit-scrollbar{
 
   dialog::backdrop {
     background-color: transparent;
+  }
+}
+
+dialog[open] {
+  animation: show 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+dialog[open]::backdrop {
+  animation: fade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translateY(-2%) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
