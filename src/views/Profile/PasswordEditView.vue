@@ -1,9 +1,10 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
+  import vInput from "@/components/input/vInput.vue";
+  import EditInfo from "@/components/dialog/EditInfo.vue";
+
   import { ref, watch, reactive } from "vue";
   import { updateUserPassword } from "@/supabase/user";
-  import vInput from "@/components/vInput.vue";
-  import EditInfo from "@/components/dialogs/EditInfo.vue";
 
   const breadcrumb = [
     {
@@ -126,7 +127,7 @@
       <button
         id="btn-action"
         class="w-full btn-secondary"
-        @click="$router.push('/account/Profile')"
+        @click="$router.push('/account')"
       >
         Cancel
       </button>

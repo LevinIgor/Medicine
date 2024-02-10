@@ -1,9 +1,10 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
-  import vInput from "@/components/vInput.vue";
+  import vInput from "@/components/input/vInput.vue";
+  import SuccessEdit from "@/components/dialog/EditInfo.vue";
+
   import { ref, reactive, watch } from "vue";
   import { updateUserName } from "@/supabase/user.js";
-  import SuccessEdit from "@/components/dialogs/EditInfo.vue";
   import useStore from "@/store";
 
   const store = useStore();
@@ -48,7 +49,7 @@
   async function onUpdate() {
     turnOffBtn();
 
-    const isSuccessful = await updateUserName(name.value);
+    const isSuccessful = await updateUserName(name.value, store.getUser.id);
 
     dialogText.title = isSuccessful
       ? "Name Successfully Changed!"
@@ -97,7 +98,7 @@
       <button
         id="btn-action"
         class="w-full btn-secondary"
-        @click="$router.push('/account/Profile')"
+        @click="$router.push('/account')"
       >
         Cancel
       </button>

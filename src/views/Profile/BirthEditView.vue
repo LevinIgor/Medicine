@@ -1,9 +1,10 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
+  import SuccessEdit from "@/components/dialog/EditInfo.vue";
+
+  import useStore from "@/store";
   import { ref, reactive } from "vue";
   import { updateUserDateOfBirth } from "@/supabase/user";
-  import SuccessEdit from "@/components/dialogs/EditInfo.vue";
-  import useStore from "@/store";
 
   const store = useStore();
   const breadcrumb = [
@@ -47,7 +48,10 @@
     if (date.value.length == 0) return;
     turnOffBtn();
 
-    const isSuccessful = await updateUserDateOfBirth(date.value);
+    const isSuccessful = await updateUserDateOfBirth(
+      date.value,
+      store.getUser.id
+    );
 
     dialogText.title = isSuccessful
       ? "Date of Birth Successfully Changed!"
@@ -84,7 +88,7 @@
       <button
         id="btn-action"
         class="w-full btn-secondary"
-        @click="$router.push('/account/Profile')"
+        @click="$router.push('/account')"
       >
         Cancel
       </button>

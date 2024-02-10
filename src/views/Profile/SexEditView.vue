@@ -1,10 +1,11 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
+  import vSelect from "@/components/input/vSelect.vue";
+  import SuccessEdit from "@/components/dialog/EditInfo.vue";
+
+  import useStore from "@/store";
   import { ref, reactive } from "vue";
   import { updateUserSex } from "@/supabase/user";
-  import vSelect from "@/components/vSelect.vue";
-  import SuccessEdit from "@/components/dialogs/EditInfo.vue";
-  import useStore from "@/store";
 
   const store = useStore();
 
@@ -48,7 +49,7 @@
     if (sex.value.length == 0) return;
     turnOffBtn();
 
-    const isSuccessful = await updateUserSex(sex.value);
+    const isSuccessful = await updateUserSex(sex.value, store.getUser.id);
 
     dialogText.title = isSuccessful
       ? "Sex Successfully Changed!"
@@ -84,7 +85,7 @@
       <button
         id="btn-action"
         class="w-full btn-secondary"
-        @click="$router.push('/account/Profile')"
+        @click="$router.push('/account')"
       >
         Cancel
       </button>

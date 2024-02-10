@@ -1,9 +1,10 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
+  import SuccessEdit from "@/components/dialog/EditInfo.vue";
+
+  import useStore from "@/store";
   import { ref, reactive } from "vue";
   import { uploadAvatarAndUpdate } from "@/supabase/user";
-  import SuccessEdit from "@/components/dialogs/EditInfo.vue";
-  import useStore from "@/store";
 
   const store = useStore();
   const breadcrumb = [
@@ -47,7 +48,8 @@
     turnOffBtn();
 
     const isSuccessful = await uploadAvatarAndUpdate(
-      file.value.target.files[0]
+      file.value.target.files[0],
+      store.getUser.id
     );
 
     dialogText.title = isSuccessful
@@ -93,7 +95,7 @@
       <button
         id="btn-action"
         class="btn-secondary w-full"
-        @click="$router.push('/account/Profile')"
+        @click="$router.push('/account')"
       >
         Cancel
       </button>

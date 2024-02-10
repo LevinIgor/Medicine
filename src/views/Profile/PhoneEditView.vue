@@ -1,10 +1,11 @@
 <script setup>
   import BaseLayout from "@/layouts/base.vue";
-  import vInput from "@/components/vInput.vue";
+  import vInput from "@/components/input/vInput.vue";
+  import EditInfo from "@/components/dialog/EditInfo.vue";
+
+  import useStore from "@/store";
   import { ref, watch, reactive } from "vue";
   import { updateUserPhone } from "@/supabase/user";
-  import useStore from "@/store";
-  import EditInfo from "@/components/dialogs/EditInfo.vue";
 
   const breadcrumb = [
     {
@@ -54,7 +55,7 @@
 
     turnOffBtn();
 
-    const isSuccessful = await updateUserPhone(phone.value);
+    const isSuccessful = await updateUserPhone(phone.value, store.getUser.id);
 
     dialogText.title = isSuccessful
       ? "Phone Number Successfully Changed!"
@@ -108,7 +109,7 @@
       <button
         id="btn-action"
         class="w-full btn-secondary"
-        @click="$router.push('/account/Profile')"
+        @click="$router.push('/account')"
       >
         Cancel
       </button>
