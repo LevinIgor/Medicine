@@ -184,7 +184,7 @@
           >See all doctors</a
         >
         <h3 class="text-center mt-16">Where we are located</h3>
-        <google-map class="mt-5"></google-map>
+        <google-map class="mt-5" />
       </v-tab>
       <v-tab title="Advantages" icon="gray-star">
         <div class="flex flex-col items-center justify-center">

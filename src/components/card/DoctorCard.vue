@@ -20,11 +20,11 @@
       </h5>
       <p class="text-center">{{ doctor.specialty }}</p>
       <div class="flex items-center justify-center pb-3 pt-1">
-        <star-icon class=""></star-icon>
-        <star-icon class=""></star-icon>
-        <star-icon class=""></star-icon>
-        <star-icon class=""></star-icon>
-        <star-icon class=""></star-icon>
+        <star-icon class="" />
+        <star-icon class="" />
+        <star-icon class="" />
+        <star-icon class="" />
+        <star-icon class="" />
       </div>
     </div>
   </div>
