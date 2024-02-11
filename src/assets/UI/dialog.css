@@ -40,7 +40,7 @@ dialog[open] {
 }
 
 dialog[open]::backdrop {
-  animation: fade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: fade 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes show {
@@ -62,4 +62,22 @@ dialog[open]::backdrop {
   100% {
     opacity: 1;
   }
+}
+
+dialog.hide {
+  animation: hide 0.3s ease-in-out;
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-2%) scale(0.96);
+  }
+}
+
+dialog.hide::backdrop {
+  animation: fade 0.4s ease-out reverse;
 }

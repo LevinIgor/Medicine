@@ -5,7 +5,7 @@
     id: { type: String, required: true },
   });
 
-  function dialogClickHandler(e) {
+  function dialogClickOutsideHandler(e) {
     if (e.target.tagName !== "DIALOG") return;
 
     const rect = e.target.getBoundingClientRect();
@@ -16,13 +16,24 @@
       rect.left <= e.clientX &&
       e.clientX <= rect.left + rect.width;
 
-    if (clickedInDialog === false) e.target.close();
+    if (clickedInDialog === false) closeDialog();
+  }
+
+  async function closeDialog() {
+    const dialog = document.getElementById(props.id);
+    dialog.classList.add("hide");
+
+    await new Promise(resolve => {
+      dialog.addEventListener("webkitAnimationEnd", resolve);
+    });
+
+    dialog.classList.remove("hide");
+    dialog.close();
   }
 
   onMounted(() => {
-    document
-      .getElementById(props.id)
-      .addEventListener("click", dialogClickHandler);
+    const dialog = document.getElementById(props.id);
+    dialog.addEventListener("click", dialogClickOutsideHandler);
   });
 </script>
 <template>
