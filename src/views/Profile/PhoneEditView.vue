@@ -10,11 +10,11 @@
   const breadcrumb = [
     {
       name: "Profile",
-      path: "/account/Profile",
+      path: "/account",
     },
     {
       name: "Phone number",
-      path: "/account/Profile",
+      path: "/account",
     },
   ];
 
