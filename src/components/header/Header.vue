@@ -63,7 +63,7 @@
         <router-link
           class="flex items-center gap-5"
           v-if="user"
-          :to="{ name: 'account', params: { tab: 'Profile' } }"
+          :to="{ name: 'account' }"
           ><div class="flex flex-col text-sm">
             <span>{{ user.name }}</span>
           </div>

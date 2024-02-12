@@ -81,7 +81,10 @@
   }
 </script>
 <template>
-  <div class="grid grid-cols-5 md:block shadow-lg rounded-lg overflow-hidden">
+  <div
+    class="grid grid-cols-5 md:block shadow-lg rounded-lg overflow-hidden"
+    id="appointment-container"
+  >
     <div
       class="col-span-2 flex flex-col items-center justify-center bg-blue-200 md:rounded-t-lg md:py-10 md:px-4"
     >

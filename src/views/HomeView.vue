@@ -50,13 +50,17 @@
     const width = window.innerWidth;
     return width > 600;
   });
+
+  function openAppointmentDialog() {
+    document.getElementById("dialog-appointment").showModal();
+  }
 </script>
 
 <template>
   <main>
     <!-- Section 1 -->
     <section class="bg-white py-32 md:py-24 relative">
-      <div class="flex flex-col items-center container">
+      <div class="flex flex-col items-center container z-10">
         <h1 class="max-w-3xl">
           Consult Your
           <span class="text-blue-200 text-6xl md:text-4xl">Health</span>
@@ -66,7 +70,7 @@
           Connecting you with the best healthcare profusions and resources using
           technology and innovation
         </p>
-        <button class="mt-5">Book Now</button>
+        <button class="mt-5" @click="openAppointmentDialog">Book Now</button>
         <h6 class="mt-40 md:mt-24 text-center">
           Our Most Valuable Trusted Partners
         </h6>
@@ -79,7 +83,7 @@
           <regeneron-icon class="w-full" />
         </div>
       </div>
-      <bg-entity-icon class="absolute w-full h-full top-0 left-0" />
+      <bg-entity-icon class="absolute w-full h-full top-0 left-0 z-0" />
     </section>
 
     <!-- Section 2 -->
@@ -136,7 +140,12 @@
             innovative solutions to provide you with the best quality of
             service.
           </p>
-          <button class="mt-5 md:mt-5">Read More</button>
+          <button
+            class="mt-5 md:mt-5"
+            @click="$router.push({ name: 'about-us' })"
+          >
+            Read More
+          </button>
         </div>
       </div>
     </section>
@@ -151,15 +160,22 @@
       <div class="grid grid-cols-12 md:block gap-5 mt-10">
         <div class="col-span-5 grid md:block grid-rows-6 gap-5">
           <div
-            class="row-span-4 md:row-span-1 bg-blue-160 rounded px-6 md:px-4 py-10 md:py-6 flex flex-col md:mt-5 relative"
+            class="row-span-4 md:row-span-1 bg-blue-160 rounded px-6 md:px-4 py-10 md:py-6 flex flex-col md:mt-5 relative z-10"
           >
             <h4>Reception at a convenient time and without a queue</h4>
             <p class="mt-3 md:mt-1">
               Schedule a visit to a doctor online and don't waste time waiting
               in lines
             </p>
-            <button class="mt-auto">Find a doctor</button>
-            <bg-med-entity-icon class="absolute w-full h-full top-0 left-0" />
+            <button
+              class="mt-auto z-10"
+              @click="$router.push({ name: 'doctors' })"
+            >
+              Find a doctor
+            </button>
+            <bg-med-entity-icon
+              class="absolute w-full h-full top-0 left-0 z-0"
+            />
           </div>
           <div
             class="row-span-2 md:row-span-1 bg-violet-180 rounded px-6 md:px-4 py-10 md:py-6 md:mt-5"
@@ -177,7 +193,7 @@
               class="col-span-4 bg-violet-180 rounded px-6 md:px-4 py-10 md:py-6 md:mt-5"
             >
               <h5>Patient's personal account</h5>
-              <arrow-square-icon class="mt-5 md:mt-3"></arrow-square-icon>
+              <arrow-square-icon class="mt-5 md:mt-3" />
             </div>
             <div
               class="col-span-6 bg-violet-180 rounded px-6 md:px-4 py-10 md:py-6 md:mt-5"
@@ -190,15 +206,22 @@
             </div>
           </div>
           <div
-            class="row-span-4 md:row-auto bg-blue-160 rounded px-6 md:px-4 py-10 md:py-6 flex flex-col md:mt-5 relative"
+            class="row-span-4 md:row-auto bg-blue-160 rounded px-6 md:px-4 py-10 md:py-6 flex flex-col md:mt-5 relative z-10"
           >
             <h4>Wide range of services</h4>
             <p class="mt-3 md:mt-1">
               We offer a variety of medical services and specializations, which
               allows us to provide comprehensive treatment and care.
             </p>
-            <button class="mt-auto md:mt-5">Find a services</button>
-            <bg-med-entity2-icon class="absolute w-full h-full top-0 left-0" />
+            <button
+              class="mt-auto md:mt-5 z-10"
+              @click="$router.push({ name: 'services' })"
+            >
+              Find a services
+            </button>
+            <bg-med-entity2-icon
+              class="absolute w-full h-full top-0 left-0 z-0"
+            />
           </div>
         </div>
       </div>

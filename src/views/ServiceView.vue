@@ -29,18 +29,14 @@
     },
   ];
 
+  function showAppointmentDialog() {
+    document.getElementById("dialog-appointment").showModal();
+  }
+
   const service = ref({});
-
-  const fetchData = async () => {
-    service.value = await fetchService(route.params.service);
-  };
-
-  [
-    "Dermatology is a medical specialty focused on the study and treatment of conditions affecting the skin, hair, and nails. Dermatologists diagnose and manage a broad spectrum of skin disorders, ranging from common issues like acne to more serious conditions such as skin cancer. The discipline encompasses both medical and cosmetic aspects, with dermatologists employing various diagnostic tools and treatment modalities to address diverse dermatological concerns.",
-    " Additionally, dermatologists play a vital role in public health through education on skin care practices and disease prevention. The field continually evolves with ongoing research, driving advancements in the understanding and treatment of skin-related conditions.",
-  ];
-
-  fetchData();
+  fetchService(route.params.service).then(data => {
+    service.value = data;
+  });
 </script>
 <template>
   <div>
@@ -49,12 +45,14 @@
       <bread-crumb class="mt-7" :breadcrumb="breadcrumb" />
       <div class="grid md:block grid-cols-2 mt-10 gap-5">
         <img
-          class="w-full h-full object-cover rounded-lg"
+          class="w-full h-full object-cover rounded-lg aspect-4/3 shadow-md"
           :src="service.image"
           alt="Service image"
           loading="lazy"
         />
-        <div class="bg-white py-10 md:py-6 px-7 md:px-4 rounded-lg md:mt-10">
+        <div
+          class="bg-white py-10 md:py-6 px-7 md:px-4 rounded-lg md:mt-10 shadow-md"
+        >
           <h2 class="text-left">{{ service.name }}</h2>
           <p
             class="mt-3"
@@ -63,7 +61,9 @@
           >
             {{ desc }}
           </p>
-          <button class="mt-5 w-full">Book Now</button>
+          <button class="mt-5 w-full" @click="showAppointmentDialog">
+            Book Now
+          </button>
         </div>
       </div>
     </section>
@@ -71,8 +71,7 @@
     <!-- Section 2 -->
     <section class="bg-white py-24 md:py-10">
       <div class="container flex flex-col items-center">
-        <h2>Prices for Diagnostics</h2>
-        <vSearchInput class="mt-5 max-w-md" is-bg-gray v-model="search" />
+        <h2>Prices for {{ service.name }}</h2>
         <v-accordion class="mt-10" :data="service.prices || []"></v-accordion>
       </div>
     </section>

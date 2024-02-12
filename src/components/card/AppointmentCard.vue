@@ -19,6 +19,10 @@
     if (isCompleted) status.value = "Canceled";
   }
 
+  function showAppointmentDialog() {
+    document.getElementById("dialog-appointment").showModal();
+  }
+
   onMounted(() => {
     isMobile.value = window.innerWidth < 700;
   });
@@ -62,7 +66,7 @@
       </div>
     </div>
     <div class="col-span-3 flex flex-col h-full justify-between">
-      <button class="w-full">Book Now</button>
+      <button class="w-full" @click="showAppointmentDialog">Book Now</button>
       <button
         class="w-full"
         @click="

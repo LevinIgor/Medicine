@@ -37,11 +37,11 @@
 </script>
 <template>
   <div
-    class="flex items-center gap-5 overflow-x-scroll w-full justify-between wrapper select-none"
+    class="flex items-center gap-5 overflow-x-scroll w-full justify-normal wrapper select-none"
     id="horizontal-filter"
   >
     <div
-      class="text-lg font-normal rounded-xl py-3 px-8 bg-white hover:bg-blue-160 cursor-pointer whitespace-nowrap w-full text-center flex items-center gap-4"
+      class="text-lg font-normal rounded-xl py-3 px-8 bg-white hover:bg-blue-160 cursor-pointer whitespace-nowrap w-fit text-center flex items-center gap-4"
       :class="{ active: active == i }"
       @click="
         active = i;

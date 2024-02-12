@@ -5,6 +5,10 @@
   import InstagramIcon from "@/components/icon/social/instagram-filled.vue";
   import TwitterIcon from "@/components/icon/social/twitter-filled.vue";
   import YoutubeIcon from "@/components/icon/social/youtube-filled.vue";
+
+  function showAppointmentDialog() {
+    document.getElementById("dialog-appointment").showModal();
+  }
 </script>
 <template>
   <footer class="bg-gray-200 py-10 md:p-3">
@@ -13,7 +17,12 @@
         <h4 class="text-white max-w-md">
           Get Started And Book An Appointment Today
         </h4>
-        <button class="md:mt-5 md:w-full">Book Now</button>
+        <button
+          class="md:mt-5 md:w-full shadow-gray-180 shadow-sm"
+          @click="showAppointmentDialog"
+        >
+          Book Now
+        </button>
       </div>
       <div class="line" />
       <div class="grid grid-cols-5 md:grid-cols-2 gap-5">

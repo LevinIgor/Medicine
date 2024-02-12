@@ -29,8 +29,11 @@
     },
   ];
 
-  const doctor = ref({});
+  function showAppointmentDialog() {
+    document.getElementById("dialog-appointment").showModal();
+  }
 
+  const doctor = ref({});
   fetchDoctor(route.params.id).then(data => {
     doctor.value = data;
   });
@@ -45,7 +48,9 @@
         alt="doctor image"
         loading="lazy"
       />
-      <div class="bg-white rounded-lg py-10 md:py-6 px-6 md:px-4 md:mt-10">
+      <div
+        class="bg-white rounded-lg py-10 md:py-6 px-6 md:px-4 md:mt-10 shadow-md"
+      >
         <h2 class="text-left">{{ doctor.name }}</h2>
         <div class="flex items-center justify-between">
           <span class="md:text-sm">{{ doctor.specialty }}</span>
@@ -82,7 +87,7 @@
             >
           </div>
 
-          <button>Book Now</button>
+          <button @click="showAppointmentDialog">Book Now</button>
         </div>
       </div>
     </div>
