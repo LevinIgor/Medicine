@@ -9,6 +9,14 @@
   import { ref, watch, reactive } from "vue";
 
   import useStore from "@/store.js";
+  const props = defineProps({
+    needLeftSide: {
+      type: Boolean,
+      default: true,
+    },
+  });
+
+  console.log(props.needLeftSide);
 
   const specialty = ref([]);
   fetchSpecialty().then(data => (specialty.value = data));
@@ -83,10 +91,12 @@
 <template>
   <div
     class="grid grid-cols-5 md:block shadow-lg rounded-lg overflow-hidden"
+    :class="needLeftSide ? '' : '!block'"
     id="appointment-container"
   >
     <div
       class="col-span-2 flex flex-col items-center justify-center bg-blue-200 md:rounded-t-lg md:py-10 md:px-4"
+      v-if="needLeftSide"
     >
       <email-icon class="md:w-40" />
       <h5 class="text-white text-center pt-10 md:pt-4 max-w-sm">

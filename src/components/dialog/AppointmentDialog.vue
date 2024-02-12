@@ -9,6 +9,8 @@
     document.getElementById(dialogId).close();
   }
 
+  const width = window.innerWidth;
+
   //   By default appointment component has a shadow-lg class, which is removed when the dialog is mounted
   onMounted(() => {
     document
@@ -24,7 +26,7 @@
       @click="closeDialog"
     />
 
-    <v-appointment />
+    <v-appointment :need-left-side="width > 600" />
   </dialog-wrapper>
 </template>
 
