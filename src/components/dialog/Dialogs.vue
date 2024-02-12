@@ -6,17 +6,19 @@
   import CheckEmail from "@/components/dialog/CheckEmail.vue";
   import MobileMenu from "@/components/dialog/MobileMenu.vue";
   import AppointmentConfirmed from "@/components/dialog/AppointmentConfirmed.vue";
+  import AppointmentDialog from "@/components/dialog/AppointmentDialog.vue";
 </script>
 
 <template>
   <div>
-    <sign-in></sign-in>
-    <sign-up></sign-up>
-    <success-sign-up></success-sign-up>
-    <reset-password></reset-password>
-    <check-email></check-email>
-    <mobile-menu></mobile-menu>
-    <appointment-confirmed></appointment-confirmed>
+    <sign-in />
+    <sign-up />
+    <success-sign-up />
+    <reset-password />
+    <check-email />
+    <mobile-menu />
+    <appointment-confirmed />
+    <appointment-dialog />
   </div>
 </template>
 
