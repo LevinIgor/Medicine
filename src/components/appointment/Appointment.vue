@@ -16,8 +16,6 @@
     },
   });
 
-  console.log(props.needLeftSide);
-
   const specialty = ref([]);
   fetchSpecialty().then(data => (specialty.value = data));
 

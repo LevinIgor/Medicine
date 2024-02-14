@@ -2,6 +2,7 @@
   import vHeader from "@/components/header/Header.vue";
   import vFooter from "@/components/footer/Footer.vue";
   import vDialogs from "@/components/dialog/Dialogs.vue";
+  import { SpeedInsights } from "@vercel/speed-insights/vue";
 </script>
 
 <template>
@@ -12,6 +13,8 @@
   </div>
   <v-footer></v-footer>
   <v-dialogs></v-dialogs>
+
+  <speed-insights />
 </template>
 
 <style scoped>
