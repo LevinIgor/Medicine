@@ -10,7 +10,7 @@
   "dependencies": {
     "@fawmi/vue-google-maps": "^0.9.79",
     "@supabase/supabase-js": "^2.38.4",
-    "@vercel/speed-insights": "^1.0.9",
+    "@vercel/speed-insights": "^1.0.10",
     "pinia": "^2.1.7",
     "swiper": "^11.0.5",
     "vue": "^3.3.4",
